@@ -44,8 +44,6 @@ namespace NegociacionesLogycaColabora.WSUNOEE {
         
         private System.Threading.SendOrPostCallback SiesaWEBContabilizarOperationCompleted;
         
-        private System.Threading.SendOrPostCallback AutenticarUsuarioSiesaEEOperationCompleted;
-        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -104,9 +102,6 @@ namespace NegociacionesLogycaColabora.WSUNOEE {
         
         /// <remarks/>
         public event SiesaWEBContabilizarCompletedEventHandler SiesaWEBContabilizarCompleted;
-        
-        /// <remarks/>
-        public event AutenticarUsuarioSiesaEECompletedEventHandler AutenticarUsuarioSiesaEECompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CrearConexionXML", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -324,35 +319,6 @@ namespace NegociacionesLogycaColabora.WSUNOEE {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AutenticarUsuarioSiesaEE", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public short AutenticarUsuarioSiesaEE(string pvstrDatos) {
-            object[] results = this.Invoke("AutenticarUsuarioSiesaEE", new object[] {
-                        pvstrDatos});
-            return ((short)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void AutenticarUsuarioSiesaEEAsync(string pvstrDatos) {
-            this.AutenticarUsuarioSiesaEEAsync(pvstrDatos, null);
-        }
-        
-        /// <remarks/>
-        public void AutenticarUsuarioSiesaEEAsync(string pvstrDatos, object userState) {
-            if ((this.AutenticarUsuarioSiesaEEOperationCompleted == null)) {
-                this.AutenticarUsuarioSiesaEEOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAutenticarUsuarioSiesaEEOperationCompleted);
-            }
-            this.InvokeAsync("AutenticarUsuarioSiesaEE", new object[] {
-                        pvstrDatos}, this.AutenticarUsuarioSiesaEEOperationCompleted, userState);
-        }
-        
-        private void OnAutenticarUsuarioSiesaEEOperationCompleted(object arg) {
-            if ((this.AutenticarUsuarioSiesaEECompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.AutenticarUsuarioSiesaEECompleted(this, new AutenticarUsuarioSiesaEECompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -526,32 +492,6 @@ namespace NegociacionesLogycaColabora.WSUNOEE {
         private object[] results;
         
         internal SiesaWEBContabilizarCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public short Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((short)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-    public delegate void AutenticarUsuarioSiesaEECompletedEventHandler(object sender, AutenticarUsuarioSiesaEECompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class AutenticarUsuarioSiesaEECompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal AutenticarUsuarioSiesaEECompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

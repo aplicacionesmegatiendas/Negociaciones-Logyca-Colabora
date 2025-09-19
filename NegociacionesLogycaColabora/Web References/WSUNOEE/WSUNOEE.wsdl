@@ -114,20 +114,6 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="AutenticarUsuarioSiesaEE">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="pvstrDatos" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="AutenticarUsuarioSiesaEEResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="AutenticarUsuarioSiesaEEResult" type="s:short" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="CrearConexionXMLSoapIn">
@@ -172,12 +158,6 @@
   <wsdl:message name="SiesaWEBContabilizarSoapOut">
     <wsdl:part name="parameters" element="tns:SiesaWEBContabilizarResponse" />
   </wsdl:message>
-  <wsdl:message name="AutenticarUsuarioSiesaEESoapIn">
-    <wsdl:part name="parameters" element="tns:AutenticarUsuarioSiesaEE" />
-  </wsdl:message>
-  <wsdl:message name="AutenticarUsuarioSiesaEESoapOut">
-    <wsdl:part name="parameters" element="tns:AutenticarUsuarioSiesaEEResponse" />
-  </wsdl:message>
   <wsdl:portType name="WSUNOEESoap">
     <wsdl:operation name="CrearConexionXML">
       <wsdl:input message="tns:CrearConexionXMLSoapIn" />
@@ -206,10 +186,6 @@
     <wsdl:operation name="SiesaWEBContabilizar">
       <wsdl:input message="tns:SiesaWEBContabilizarSoapIn" />
       <wsdl:output message="tns:SiesaWEBContabilizarSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="AutenticarUsuarioSiesaEE">
-      <wsdl:input message="tns:AutenticarUsuarioSiesaEESoapIn" />
-      <wsdl:output message="tns:AutenticarUsuarioSiesaEESoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSUNOEESoap" type="tns:WSUNOEESoap">
@@ -270,15 +246,6 @@
     </wsdl:operation>
     <wsdl:operation name="SiesaWEBContabilizar">
       <soap:operation soapAction="http://tempuri.org/SiesaWEBContabilizar" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="AutenticarUsuarioSiesaEE">
-      <soap:operation soapAction="http://tempuri.org/AutenticarUsuarioSiesaEE" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -352,22 +319,13 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="AutenticarUsuarioSiesaEE">
-      <soap12:operation soapAction="http://tempuri.org/AutenticarUsuarioSiesaEE" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="WSUNOEE">
     <wsdl:port name="WSUNOEESoap" binding="tns:WSUNOEESoap">
-      <soap:address location="http://190.131.208.98:8095/WSUNOEE/WSUNOEE.asmx" />
+      <soap:address location="http://190.131.208.98/WSUNOEE/WSUNOEE.asmx" />
     </wsdl:port>
     <wsdl:port name="WSUNOEESoap12" binding="tns:WSUNOEESoap12">
-      <soap12:address location="http://190.131.208.98:8095/WSUNOEE/WSUNOEE.asmx" />
+      <soap12:address location="http://190.131.208.98/WSUNOEE/WSUNOEE.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

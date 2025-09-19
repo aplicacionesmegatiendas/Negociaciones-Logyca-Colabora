@@ -378,10 +378,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://190.131.208.98:8095/WSUNOEE/WSUNOEE.asmx">
+    <WebReferenceUrl Include="http://190.131.208.98:8002/WSUNOEE/WSUNOEE.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WSUNOEE\</RelPath>
-      <UpdateFromURL>http://190.131.208.98:8095/WSUNOEE/WSUNOEE.asmx</UpdateFromURL>
+      <UpdateFromURL>http://190.131.208.98:8002/WSUNOEE/WSUNOEE.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

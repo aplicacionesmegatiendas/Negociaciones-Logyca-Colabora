@@ -26,7 +26,7 @@ namespace NegociacionesLogycaColabora.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://190.131.208.98:8095/WSUNOEE/WSUNOEE.asmx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://190.131.208.98/WSUNOEE/WSUNOEE.asmx")]
         public string NegociacionesLogycaColabora_WSUNOEE_WSUNOEE {
             get {
                 return ((string)(this["NegociacionesLogycaColabora_WSUNOEE_WSUNOEE"]));

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="NegociacionesLogycaColabora_WSUNOEE_WSUNOEE" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://190.131.208.98:8095/WSUNOEE/WSUNOEE.asmx</Value>
+      <Value Profile="(Default)">http://190.131.208.98/WSUNOEE/WSUNOEE.asmx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -4646,18 +4646,21 @@ namespace NegociacionesLogycaColabora
 		/// <returns>Devuelve un objeto de tipo datatable que contiene la información.</returns>
 		public DataTable ListarCentrosOperacion()
 		{
-			string SQL = "SELECT " +
-							"f285_id, f285_id + '-' + f285_descripcion AS f285_descripcion " +
-						 "FROM " +
-							"t285_co_centro_op " +
-						 "INNER JOIN t280_co_regionales ON f285_id_regional=f280_id AND " +
-															"f280_id_cia=f285_id_cia " +
-						 "WHERE " +
-							"f285_id_cia=1 AND " +
-							"f285_id NOT IN('115','701') AND " +
-							"f285_id_portafolio IS NOT NULL " +
-						 "ORDER BY " +
-							"f285_id, f285_id_regional";
+			Configuration config = ConfigurationManager.OpenExeConfiguration(Application.StartupPath + "\\" + Application.ProductName + ".exe");
+			AppSettingsSection section = config.AppSettings;
+			string no_instalacion = section.Settings["no_instalacion"].Value.ToString();
+
+			string SQL = $@"SELECT
+							f285_id, f285_id + '-' + f285_descripcion AS f285_descripcion
+						 FROM
+							t285_co_centro_op
+						 INNER JOIN t280_co_regionales ON f285_id_regional=f280_id AND f280_id_cia=f285_id_cia
+						 WHERE
+							f285_id_cia=1 AND
+							f285_id NOT IN({no_instalacion}) AND
+							f285_id_portafolio IS NOT NULL
+						 ORDER BY
+							f285_id, f285_id_regional";
 
 			DataTable dt = null;
 

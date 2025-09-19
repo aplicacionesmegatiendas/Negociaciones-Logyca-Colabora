@@ -288,14 +288,15 @@ namespace NegociacionesLogycaColabora
 				if (errores != "")
 					MessageBox.Show(errores, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				if (Conectores.dt_resumen.Rows.Count.Equals(0) && errores.Equals(string.Empty))
+				{
+					Conectores.LiberarResumen();
+
+					actualizar.ActualizarDocumento();
+					Conectores.MoverArchivoProcesado(raiz + Datos.GlnComprador + "\\MODIFICACION\\PRECIO\\" + Datos.NombreDocumento);
+
+					conector.RegistrarActividad(Datos.Usuario, Datos.GlnComprador, Datos.GlnProveedor, "CAMBIO_PRECIO", Datos.NumeroDocumento, Datos.NombreDocumento);
 					MessageBox.Show("Conectores creados correctamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-				Conectores.LiberarResumen();
-
-				actualizar.ActualizarDocumento();
-				Conectores.MoverArchivoProcesado(raiz + Datos.GlnComprador + "\\MODIFICACION\\PRECIO\\" + Datos.NombreDocumento);
-
-				conector.RegistrarActividad(Datos.Usuario, Datos.GlnComprador, Datos.GlnProveedor, "CAMBIO_PRECIO", Datos.NumeroDocumento, Datos.NombreDocumento);
+				}
 			}
 			catch (Exception ex)
 			{

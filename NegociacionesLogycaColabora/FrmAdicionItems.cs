@@ -345,28 +345,38 @@ namespace NegociacionesLogycaColabora
 			{
 				cmb_und_inv.SelectedValue = info_item[0][13];
 			}
-			txt_peso_und_inv.Text = Convert.ToString(info_item[0][14]);
+			_=decimal.TryParse(Convert.ToString(info_item[0][14]), out decimal peso_und_inv);
+			txt_peso_und_inv.Text = peso_und_inv.ToString(); ;
 
 			cmb_und_orden.SelectedIndex = -1;
 			if (!info_item[0][15].Equals(""))
 			{
 				cmb_und_orden.SelectedValue = info_item[0][15];
 			}
-			if (!Convert.ToString(info_item[0][16]).Equals(""))
-			{
-				txt_fact_und_orden.Text = Convert.ToString(info_item[0][16]);
-				txt_tamaño_lote.Text = txt_fact_und_orden.Text; //Convert.ToString(info_item[0][16]);
-			}
-			else
-			{
-				txt_fact_und_orden.Text = "0";
-				txt_tamaño_lote.Text = "0";
-			}
+			_=decimal.TryParse(Convert.ToString(info_item[0][16]), out decimal fact_und_orden);
+			//if (!Convert.ToString(info_item[0][16]).Equals(""))
+			//{
+			txt_fact_und_orden.Text = fact_und_orden.ToString();// Convert.ToString(info_item[0][16]);
+			txt_tamaño_lote.Text = fact_und_orden.ToString();// txt_fact_und_orden.Text; 
+			//}
+			//else
+			//{
+			//	txt_fact_und_orden.Text = "0";
+			//	txt_tamaño_lote.Text = "0";
+			//}
 
-			if (!info_item[0][14].Equals("") && !info_item[0][16].Equals(""))
+			decimal factor_peso_orden = Convert.ToDecimal(info_item[0][17]);
+			//if (factor_peso_orden > 0)
+			//{
+				txt_factor_peso_orden.Text = factor_peso_orden.ToString();
+			//}
+			/*else
 			{
-				txt_factor_peso_orden.Text = (Convert.ToDecimal(info_item[0][14]) * Convert.ToDecimal(info_item[0][16])).ToString("0.#");
-			}
+				if (!info_item[0][14].Equals("") && !info_item[0][16].Equals(""))
+				{
+					txt_factor_peso_orden.Text = (Convert.ToDecimal(info_item[0][14]) * Convert.ToDecimal(info_item[0][16])).ToString("0.#");
+				}
+			}*/
 
 			cmb_und_emp.SelectedIndex = -1;
 			if (!info_item[0][18].Equals(""))
@@ -377,18 +387,37 @@ namespace NegociacionesLogycaColabora
 			{
 				cmb_und_emp.SelectedValue = "";
 			}
-			if (!Convert.ToString(info_item[0][19]).Equals(""))
+			_ = decimal.TryParse(Convert.ToString(info_item[0][19]), out decimal fact_und_emp);
+			//if (!Convert.ToString(info_item[0][19]).Equals(""))
+			//{
+				txt_fact_und_emp.Text = fact_und_emp.ToString();
+			//}
+			//else
+			//{
+				//txt_fact_und_emp.Text = "0";
+			//}
+
+			decimal factor_peso_empaque = Convert.ToDecimal(info_item[0][20]);
+			//if (factor_peso_empaque > 0)
+			//{
+				txt_factor_peso_emp.Text = factor_peso_empaque.ToString();
+			//}
+			/*else
 			{
-				txt_fact_und_emp.Text = Convert.ToString(info_item[0][19]);
-			}
-			else
-			{
-				txt_fact_und_emp.Text = "0";
-			}
-			if (!info_item[0][14].ToString().Trim().Equals("") && !info_item[0][19].ToString().Trim().Equals(""))
-			{
-				txt_factor_peso_emp.Text = (Convert.ToDecimal(info_item[0][14]) * Convert.ToDecimal(info_item[0][19])).ToString("0.#");
-			}
+				if (!info_item[0][14].ToString().Trim().Equals("") && !info_item[0][19].ToString().Trim().Equals(""))
+				{
+					txt_factor_peso_emp.Text = (Convert.ToDecimal(info_item[0][14]) * Convert.ToDecimal(info_item[0][19])).ToString("0.#");
+				}
+			}*/
+			////////////////////////////////////////////////////////////////////////////////
+			/*_ = decimal.TryParse(txt_peso_und_inv.Text, out decimal peso_und_inv);
+			_ = decimal.TryParse(txt_fact_und_orden.Text, out decimal factor_und_orden);
+			_ = decimal.TryParse(txt_fact_und_emp.Text, out decimal factor_und_emp);*/
+
+			txt_factor_peso_orden.Text = (Math.Truncate((peso_und_inv * fact_und_orden) * 1000) / 1000).ToString();
+			txt_factor_peso_emp.Text = (Math.Truncate((peso_und_inv * fact_und_emp) * 1000) / 1000).ToString();
+			
+			////////////////////////////////////////////////////////////////////////////////
 
 			/////////////////////////////////COTIZACION////////////////////////////////////
 			txt_moneda.Text = Convert.ToString(info_item[1][8]);
@@ -557,8 +586,21 @@ namespace NegociacionesLogycaColabora
 			lbl_multiplos_desp.Text = Convert.ToString(info_item[8][22]).Trim();
 			lbl_proveedor.Text = Convert.ToString(info_item[8][23]).Trim();
 			lbl_cant_cont.Text = Convert.ToString(info_item[8][24]).Trim();
+			txt_factor.Text = lbl_cant_cont.Text;
+			lbl_calif_cant_cont.Text = Convert.ToString(info_item[8][27]).Trim();
+			txt_und_factor.Text = Convert.ToString(info_item[8][28]).Trim();
 			lbl_unds_embalaje.Text = Convert.ToString(info_item[8][25]).Trim();
 			lbl_sublinea.Text = Convert.ToString(info_item[8][26]).Trim();
+		}
+
+		private void Txt_peso_und_inv_TextChanged1(object sender, EventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+
+		private void Txt_peso_und_inv_TextChanged(object sender, EventArgs e)
+		{
+			throw new NotImplementedException();
 		}
 
 		private void ObtenerDatosItemEspejo(string referencia)
@@ -969,20 +1011,31 @@ namespace NegociacionesLogycaColabora
 					errores += $"ConectorItemPortafolios: {ex.Message}{Environment.NewLine}";
 				}
 
+				try
+				{
+					conector.CrearConectorItemPum(Datos.NumeroDocumento, Datos.NombreDocumento, Datos.GlnProveedor, Datos.GlnComprador, /*Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\CONECTORES\\ADICION\\1_AD_ITEM_" + txt_razon_social.Text + "_" + fechahora + ".TXT",*/ lista_items);
+				}
+				catch (Exception ex)
+				{
+					errores += $"ConectorItemPum: {ex.Message}{Environment.NewLine}";
+				}
+
 				if (Conectores.dt_resumen.Rows.Count > 0)
 					new FrmResumen(Conectores.dt_resumen).ShowDialog(this);
 				if (errores != "")
 					MessageBox.Show(errores, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-				Conectores.LiberarResumen();
+				Datos actualizar = new Datos();
+				actualizar.ActualizarDocumento();
+				Conectores.MoverArchivoProcesado(raiz + Datos.GlnComprador + "\\ADICION\\" + Datos.NombreDocumento);
+				conector.RegistrarActividad(Datos.Usuario, Datos.GlnComprador, Datos.GlnProveedor, "ADICION", Datos.NumeroDocumento, Datos.NombreDocumento);
+
 				if (Conectores.dt_resumen.Rows.Count.Equals(0) && errores.Equals(string.Empty))
 				{
-					Datos actualizar = new Datos();
-					actualizar.ActualizarDocumento();
-					Conectores.MoverArchivoProcesado(raiz + Datos.GlnComprador + "\\ADICION\\" + Datos.NombreDocumento);
-					conector.RegistrarActividad(Datos.Usuario, Datos.GlnComprador, Datos.GlnProveedor, "ADICION", Datos.NumeroDocumento, Datos.NombreDocumento);
 					MessageBox.Show("Conectores creados correctamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
+
+				Conectores.LiberarResumen();
 			}
 			catch (Exception ex)
 			{
@@ -1163,7 +1216,20 @@ namespace NegociacionesLogycaColabora
 					Transition.run(chk_ind_manuf, "ForeColor", Color.Red, new TransitionType_Flash(5, 300));
 					return;
 				}
-
+				if (txt_fact_und_orden.Text == "" || txt_factor_peso_orden.Text == "")
+				{
+					MessageBox.Show("Debe escribir la información para el factor y el peso de la unidad de orden", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+					Transition.run(lbl_tit_factor_orden, "ForeColor", Color.Red, new TransitionType_Flash(5, 300));
+					Transition.run(lbl_tit_factor_peso_orden, "ForeColor", Color.Red, new TransitionType_Flash(5, 300));
+					return;
+				}
+				if (txt_fact_und_emp.Text == "" || txt_factor_peso_emp.Text == "")
+				{
+					MessageBox.Show("Debe escribir la información para el factor y el peso de la unidad de empaque", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+					Transition.run(lbl_tit_factor_empaque, "ForeColor", Color.Red, new TransitionType_Flash(5, 300));
+					Transition.run(lbl_tit_factor_peso_empaque, "ForeColor", Color.Red, new TransitionType_Flash(5, 300));
+					return;
+				}
 				if (Convert.ToDecimal(txt_fact_und_orden.Text) > 1)
 				{
 					if ((txt_alto_emp.Text == "" || Convert.ToDecimal(txt_alto_emp.Text) == 0) ||
@@ -1221,7 +1287,14 @@ namespace NegociacionesLogycaColabora
 						}
 					}
 				}
-
+				if (txt_factor.Text == "" || txt_und_factor.Text == "")
+				{
+					MessageBox.Show("Escriba los datos para el factor y la unidad del factor", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					Transition.run(lbl_tit_factor, "ForeColor", Color.Red, new TransitionType_Flash(5, 300));
+					Transition.run(lbl_tit_und_factor, "ForeColor", Color.Red, new TransitionType_Flash(5, 300));
+					_tabControl.SelectedIndex = 3;
+					return;
+				}
 				if (txt_cant_und_med.Text.Trim().Equals("") || cmb_tipo_codigo.SelectedIndex == -1 || cmb_ind_operacion.SelectedIndex == -1 || txt_factor_operacion.Text.Trim().Equals(""))
 				{
 					MessageBox.Show("Falta la información de código de barras", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -1306,7 +1379,16 @@ namespace NegociacionesLogycaColabora
 					valores_cotizacion[4] = chk_aceptar.CheckState;
 					guardar.ActualizarItemCotizacion(valores_cotizacion);
 
-					guardar.ActualizarItemDescripcionTecnica(lbl_referencia.Text, chk_aceptar.Checked);
+					object[] valores_desc_tecnica = new object[8];
+					valores_desc_tecnica[0] = lbl_referencia.Text;
+					valores_desc_tecnica[1] = txt_alto_inv.Text;
+					valores_desc_tecnica[2] = txt_ancho_inv.Text;
+					valores_desc_tecnica[3] = txt_profundo_inv.Text;
+					valores_desc_tecnica[4] = txt_alto_emp.Text;
+					valores_desc_tecnica[5] = txt_ancho_emp.Text;
+					valores_desc_tecnica[6] = txt_profundo_emp.Text;
+					valores_desc_tecnica[7] = chk_aceptar.CheckState;
+					guardar.ActualizarItemDescripcionTecnica(valores_desc_tecnica);
 
 					guardar.ActualizarItemCriteriosClasificacion(lbl_referencia.Text, dgv_criterios_clasif, chk_aceptar.Checked);
 
@@ -1325,6 +1407,11 @@ namespace NegociacionesLogycaColabora
 					valores_barra[5] = chk_aceptar.CheckState;
 					valores_barra[6] = chk_ppal.CheckState;
 					guardar.ActualizarItemCodigoBarras(lbl_referencia.Text, valores_barra);
+
+					object[] valores_otros_datos = new object[2];
+					valores_otros_datos[0] = txt_factor.Text.Trim();
+					valores_otros_datos[1] = txt_und_factor.Text.Trim();
+					guardar.ActualizarOtrosDatos(lbl_referencia.Text, valores_otros_datos);
 				}
 				else
 				{
@@ -1481,8 +1568,8 @@ namespace NegociacionesLogycaColabora
 						mensaje += "Barra ";
 					}
 
-					MessageBox.Show("Los datos de Indicador de compra, Indicador de venta, indicador de manufactura, " +
-								mensaje.Trim().Trim(',') + " provienen de la información de otro item. " +
+					MessageBox.Show("Los datos de Indicador de compra, Indicador de venta, Indicador de manufactura, " +
+								mensaje.Trim().Trim(',') + " provienen de la información de otro ítem. " +
 								"Verifique estos datos y valide la información antes de guardar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				}
 
@@ -2202,7 +2289,16 @@ namespace NegociacionesLogycaColabora
 						valores_cotizacion[4] = false;
 						guardar.ActualizarItemCotizacion(valores_cotizacion);
 
-						guardar.ActualizarItemDescripcionTecnica(lbl_referencia.Text, false);
+						object[] valores_desc_tecnica = new object[8];
+						valores_desc_tecnica[0] = lbl_referencia.Text;
+						valores_desc_tecnica[1] = txt_alto_inv.Text;
+						valores_desc_tecnica[2] = txt_ancho_inv.Text;
+						valores_desc_tecnica[3] = txt_profundo_inv.Text;
+						valores_desc_tecnica[4] = txt_alto_emp.Text;
+						valores_desc_tecnica[5] = txt_ancho_emp.Text;
+						valores_desc_tecnica[6] = txt_profundo_emp.Text;
+						valores_desc_tecnica[7] = chk_aceptar.CheckState;
+						guardar.ActualizarItemDescripcionTecnica(valores_desc_tecnica);
 
 						guardar.ActualizarItemCriteriosClasificacion(lbl_referencia.Text, dgv_criterios_clasif, false);
 
@@ -2436,6 +2532,26 @@ namespace NegociacionesLogycaColabora
 						chk_todos.Checked = false;
 					}
 				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		private void txt_peso_TextChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				_=decimal.TryParse(txt_peso_und_inv.Text, out decimal peso_und_inv);
+				_=decimal.TryParse(txt_fact_und_orden.Text, out decimal factor_und_orden);
+				_=decimal.TryParse(txt_fact_und_emp.Text, out decimal factor_und_emp);
+
+				decimal factor_peso_orden = peso_und_inv * factor_und_orden;
+				txt_factor_peso_orden.Text=(Math.Truncate(factor_peso_orden * 1000) / 1000).ToString();
+
+				decimal factor_peso_emp = peso_und_inv * factor_und_emp;
+				txt_factor_peso_emp.Text =(Math.Truncate(factor_peso_emp * 1000) / 1000).ToString();
 			}
 			catch (Exception ex)
 			{

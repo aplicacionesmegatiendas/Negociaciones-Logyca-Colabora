@@ -554,15 +554,15 @@ namespace NegociacionesLogycaColabora
 		/// <returns>Devuelve un objeto List que contiene la información.</returns>
 		public List<UnidadMedida> ListarUnidadesMedida()
 		{
-			string SQL = "SELECT " +
-							"RTRIM(f101_id) AS f101_id, " +
-							"(f101_id + ' - ' + f101_descripcion) AS f101_descripcion " +
-						 "FROM " +
-							"t101_mc_unidades_medida " +
-						 "WHERE " +
-							"f101_id_cia=1 " +
-						 "ORDER BY " +
-							"1";
+			string SQL = @"SELECT
+							RTRIM(f101_id) AS f101_id, 
+							(f101_id + ' - ' + f101_descripcion) AS f101_descripcion 
+						 FROM 
+							t101_mc_unidades_medida 
+						 WHERE 
+							f101_id_cia=1 
+						 ORDER BY 
+							1";
 			try
 			{
 				List<UnidadMedida> listado = null;
@@ -592,6 +592,31 @@ namespace NegociacionesLogycaColabora
 			{
 				throw new Exception("Error al obtener el listado de unidades de medida: " + ex.Message);
 			}
+		}
+
+		public string ObtenerIdUnidadMedida(string unidad_medida)
+		{
+			string SQL = @"select
+								un_id_unidad_pum
+							from
+								Unidades
+							where
+								un_unidad_megatiendas =@und";
+			string res = "";
+			try
+			{				
+				SqlConnection conn = new SqlConnection(Conexion.CadenaConexionLogyca);
+				conn.Open();
+				SqlCommand cmd = new SqlCommand(SQL, conn);
+				cmd.CommandType = CommandType.Text;
+				cmd.Parameters.AddWithValue("@und", unidad_medida);
+				res=Convert.ToString(cmd.ExecuteScalar()).Trim();
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Error al obtener id de unidad de medida: " + ex.Message);
+			}
+			return res;
 		}
 
 		/// <summary>
@@ -1627,7 +1652,11 @@ namespace NegociacionesLogycaColabora
 
 								if (COLUMNA_FECHA_INICIAL_PRECIO > 0)
 								{
-									cmd.Parameters.AddWithValue("@FECHA_ACT", Convert.ToDateTime(lineas.Cell(i, COLUMNA_FECHA_INICIAL_PRECIO).GetValue<string>(), CultureInfo.CurrentCulture).ToString("yyyyMMdd"));
+									string fecha_ini = lineas.Cell(i, COLUMNA_FECHA_INICIAL_PRECIO).GetValue<string>();
+									if (fecha_ini.Equals(""))
+										cmd.Parameters.AddWithValue("@FECHA_ACT", DBNull.Value);
+									else
+										cmd.Parameters.AddWithValue("@FECHA_ACT", Convert.ToDateTime(fecha_ini, CultureInfo.CurrentCulture).ToString("yyyyMMdd"));
 								}
 								else
 								{
@@ -1635,12 +1664,17 @@ namespace NegociacionesLogycaColabora
 								}
 								if (COLUMNA_FECHA_FINAL_PRECIO > 0)
 								{
-									cmd.Parameters.AddWithValue("@FECHA_HASTA", Convert.ToDateTime(lineas.Cell(i, COLUMNA_FECHA_FINAL_PRECIO).GetValue<string>(), CultureInfo.CurrentCulture).ToString("yyyyMMdd"));
+									string fecha_fin = lineas.Cell(i, COLUMNA_FECHA_FINAL_PRECIO).GetValue<string>();
+									if (fecha_fin.Equals(""))
+										cmd.Parameters.AddWithValue("@FECHA_HASTA", DBNull.Value);
+									else
+										cmd.Parameters.AddWithValue("@FECHA_HASTA", Convert.ToDateTime(fecha_fin, CultureInfo.CurrentCulture).ToString("yyyyMMdd"));
 								}
 								else
 								{
 									cmd.Parameters.AddWithValue("@FECHA_HASTA", DBNull.Value);
 								}
+
 								cmd.ExecuteNonQuery();
 
 								cmd.Parameters.Clear();
@@ -2061,7 +2095,9 @@ namespace NegociacionesLogycaColabora
 									"ot_proveedor, " +
 									"ot_cant_contenida, " +
 									"ot_unds_embalaje, " +
-									"ot_sublinea" +
+									"ot_sublinea, " +
+									"ot_calificador_cantidad_contenida, " +
+									"ot_id_calificador_cantidad_contenida" +
 								") " +
 							"VALUES" +
 								"(" +
@@ -2088,7 +2124,9 @@ namespace NegociacionesLogycaColabora
 									"@PROVEEDOR, " +
 									"@CANT_CONTENIDA, " +
 									"@UNDS_EMBALAJE, " +
-									"@SUBLINEA" +
+									"@SUBLINEA," +
+									"@CALIF_CANT_CONTENIDA, " +
+									"@ID_CALIF_CANT_CONTENIDA" +
 								 ") " +
 						"END";
 
@@ -2112,6 +2150,7 @@ namespace NegociacionesLogycaColabora
 			string MULTIPLOS_DE_DESPACHO = "MULTIPLOS DE DESPACHO";
 			string PROVEEDOR = "PROVEEDOR";
 			string CANTIDAD_CONTENIDA = "CANTIDAD CONTENIDA";
+			string CALIFICADOR_CANTIDAD_CONTENIDA = "CALIFICADOR CANTIDAD CONTENIDA";
 			string UNIDADES_EN_EMBALAJE = "UNIDADES EN EL EMBALAJE";
 			string SUBLINEA = "SUBLINEA	";
 
@@ -2135,6 +2174,7 @@ namespace NegociacionesLogycaColabora
 			int COLUMNA_MULTIPLOS_DE_DESPACHO = 0;
 			int COLUMNA_PROVEEDOR = 0;
 			int COLUMNA_CANTIDAD_CONTENIDA = 0;
+			int COLUMNA_CALIFICADOR_CANTIDAD_CONTENIDA = 0;
 			int COLUMNA_UNIDADES_EN_EMBALAJE = 0;
 			int COLUMNA_SUBLINEA = 0;
 
@@ -2168,6 +2208,7 @@ namespace NegociacionesLogycaColabora
 				COLUMNA_MULTIPLOS_DE_DESPACHO = GetColumnIndex(MULTIPLOS_DE_DESPACHO, lineas);
 				COLUMNA_PROVEEDOR = GetColumnIndex(PROVEEDOR, lineas);
 				COLUMNA_CANTIDAD_CONTENIDA = GetColumnIndex(CANTIDAD_CONTENIDA, lineas);
+				COLUMNA_CALIFICADOR_CANTIDAD_CONTENIDA = GetColumnIndex(CALIFICADOR_CANTIDAD_CONTENIDA, lineas);
 				COLUMNA_UNIDADES_EN_EMBALAJE = GetColumnIndex(UNIDADES_EN_EMBALAJE, lineas);
 				COLUMNA_SUBLINEA = GetColumnIndex(SUBLINEA, lineas);
 
@@ -2327,6 +2368,31 @@ namespace NegociacionesLogycaColabora
 								{
 									cmd.Parameters.AddWithValue("@CANT_CONTENIDA", DBNull.Value);
 								}
+
+								if (COLUMNA_CALIFICADOR_CANTIDAD_CONTENIDA > 0)
+								{
+									DataTable dt_unds_medida = ListarEquivalenciaUnidadesMedida();
+									string calif_cant_contenida = "";
+									string und_logyca = lineas.Cell(i, COLUMNA_CALIFICADOR_CANTIDAD_CONTENIDA).GetValue<string>().Trim();
+									foreach (DataRow und in dt_unds_medida.Rows)
+									{
+										if (und[2].Equals(und_logyca))
+										{
+											calif_cant_contenida = und[1].ToString();
+											break;
+										}
+									}
+									cmd.Parameters.AddWithValue("@CALIF_CANT_CONTENIDA", calif_cant_contenida);
+
+									Datos datos = new Datos();
+									string id_und = datos.ObtenerIdUnidadMedida(calif_cant_contenida);
+									cmd.Parameters.AddWithValue("@ID_CALIF_CANT_CONTENIDA", id_und);
+								}
+								else
+								{
+									cmd.Parameters.AddWithValue("@CALIF_CANT_CONTENIDA", DBNull.Value);
+								}
+
 								if (COLUMNA_UNIDADES_EN_EMBALAJE > 0)
 								{
 									cmd.Parameters.AddWithValue("@UNDS_EMBALAJE", lineas.Cell(i, COLUMNA_UNIDADES_EN_EMBALAJE).GetValue<string>());
@@ -3128,7 +3194,10 @@ namespace NegociacionesLogycaColabora
                                 isnull(ot_proveedor, '') ot_proveedor,
                                 isnull(ot_cant_contenida, 0) ot_cant_contenida,
                                 isnull(ot_unds_embalaje, 0) ot_unds_embalaje,
-                                isnull(ot_sublinea, '') ot_sublinea
+                                isnull(ot_sublinea, '') ot_sublinea,
+								isnull(ot_calificador_cantidad_contenida, '') ot_calificador_cantidad_contenida,
+								isnull(ot_id_calificador_cantidad_contenida, '') ot_id_calificador_cantidad_contenida,
+								ot_gtin
                             FROM
                                 Documentos
                             INNER JOIN OtrosDatos ON do_numero_doc = ot_numero_doc AND do_nombre_doc = ot_nombre_doc
@@ -3659,6 +3728,9 @@ namespace NegociacionesLogycaColabora
 						listado_otros_datos.Add(dr11.GetDecimal(24));
 						listado_otros_datos.Add(dr11.GetInt32(25));
 						listado_otros_datos.Add(dr11.GetString(26));
+						listado_otros_datos.Add(dr11.GetString(27));
+						listado_otros_datos.Add(dr11.GetString(28));
+						listado_otros_datos.Add(dr11.GetString(29));
 					}
 
 					dr11.Close();
@@ -3683,17 +3755,17 @@ namespace NegociacionesLogycaColabora
 		/// <returns></returns>
 		public List<string> ObtenerListadoGeneralAdicion(string numero_doc, string nombre_doc, string gln_proveedor, string gln_comprador)
 		{
-			string SQL = "SELECT " +
-							"it_gtin " +
-						 "FROM " +
-						   "Documentos " +
-							"INNER JOIN Items ON do_numero_doc=it_numero_doc AND do_nombre_doc=it_nombre_doc " +
-																	"AND do_gln_proveedor=it_gln_proveedor AND do_gln_comprador=it_gln_comprador " +
-						"WHERE " +
-							"do_numero_doc=@NRO_DOC AND " +
-							"do_nombre_doc=@NOMB_DOC " +
-							"AND do_gln_proveedor=@GLN_PROV AND " +
-							"do_gln_comprador=@GLN_COMP ";
+			string SQL = @"SELECT 
+							it_gtin 
+						 FROM 
+						   Documentos 
+						   INNER JOIN Items ON do_numero_doc=it_numero_doc AND do_nombre_doc=it_nombre_doc 
+											   AND do_gln_proveedor=it_gln_proveedor AND do_gln_comprador=it_gln_comprador 
+						WHERE 
+							do_numero_doc=@NRO_DOC AND 
+							do_nombre_doc=@NOMB_DOC 
+							AND do_gln_proveedor=@GLN_PROV AND 
+							do_gln_comprador=@GLN_COMP ";
 			List<string> listado = null;
 			try
 			{
@@ -3880,7 +3952,7 @@ namespace NegociacionesLogycaColabora
 			}
 		}
 
-		public void ActualizarItemDescripcionTecnica(string gtin, object aceptado)
+		public void ActualizarItemDescripcionTecnica(object[] valores)
 		{
 			string SQL = "SP_ActualizarItemDescripcionTecnica";
 			try
@@ -3893,8 +3965,15 @@ namespace NegociacionesLogycaColabora
 				cmd.Parameters.AddWithValue("@NOMB_DOC", NombreDocumento);
 				cmd.Parameters.AddWithValue("@GLN_PROV", GlnProveedor);
 				cmd.Parameters.AddWithValue("@GLN_COMP", GlnComprador);
-				cmd.Parameters.AddWithValue("@GTIN", gtin);
-				cmd.Parameters.AddWithValue("@ACEPTADO", aceptado);
+				cmd.Parameters.AddWithValue("@GTIN", valores[0]);
+
+				cmd.Parameters.AddWithValue("@ALTO", Convert.ToDecimal(valores[1]));
+				cmd.Parameters.AddWithValue("@ANCHO",Convert.ToDecimal(valores[2]));
+				cmd.Parameters.AddWithValue("@PROFUNDO", Convert.ToDecimal(valores[3]));
+				cmd.Parameters.AddWithValue("@ALTO_EMP", Convert.ToDecimal(valores[4]));
+				cmd.Parameters.AddWithValue("@ANCHO_EMP", Convert.ToDecimal(valores[5]));
+				cmd.Parameters.AddWithValue("@PROFUNDO_EMP", Convert.ToDecimal(valores[6]));
+				cmd.Parameters.AddWithValue("@ACEPTADO", valores[7]);
 				cmd.ExecuteNonQuery();
 				conn.Close();
 			}
@@ -4535,6 +4614,55 @@ namespace NegociacionesLogycaColabora
 			catch (Exception ex)
 			{
 				throw new Exception("Error al actualizar la información de código de barras: " + ex.Message);
+			}
+		}
+
+		public void ActualizarOtrosDatos(string gtin, object[] valores)
+		{
+			string SQL = @"update
+								OtrosDatos
+							set
+								ot_cant_contenida=@cant_contenida,
+								ot_id_calificador_cantidad_contenida=@id_calificador_cantidad_contenida
+							where
+								ot_numero_doc=@nro_doc
+								and ot_nombre_doc=@nomb_doc
+								and ot_gln_proveedor=@gln_prov
+								and ot_gln_comprador=@gln_comp
+								and ot_gtin=@gtin
+								and 
+								(
+									select 
+										do_estado 
+									from 
+										Documentos 
+									where 
+										do_numero_doc=@nro_doc AND 
+										do_nombre_doc=@nomb_doc AND 
+										do_gln_proveedor=@gln_prov AND 
+										do_gln_comprador=@gln_comp
+								)= 0";
+
+			try
+			{
+				
+					SqlConnection conn = new SqlConnection(Conexion.CadenaConexionLogyca);
+					conn.Open();
+					SqlCommand cmd = new SqlCommand(SQL, conn);
+					cmd.CommandType = CommandType.Text;
+					cmd.Parameters.AddWithValue("@nro_doc", NumeroDocumento);
+					cmd.Parameters.AddWithValue("@nomb_doc", NombreDocumento);
+					cmd.Parameters.AddWithValue("@gln_prov", GlnProveedor);
+					cmd.Parameters.AddWithValue("@gln_comp", GlnComprador);
+					cmd.Parameters.AddWithValue("@gtin", gtin);
+					cmd.Parameters.AddWithValue("@cant_contenida", Convert.ToDecimal(valores[0]));
+					cmd.Parameters.AddWithValue("@id_calificador_cantidad_contenida", valores[1]);
+					cmd.ExecuteNonQuery();
+					conn.Close();
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Error al actualizar la información de otros datos: " + ex.Message);
 			}
 		}
 

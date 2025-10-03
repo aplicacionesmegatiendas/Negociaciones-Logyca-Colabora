@@ -383,7 +383,7 @@ namespace NegociacionesLogycaColabora
 			if (dt_item_adicion.Rows.Count > 0)
 			{
 				foreach (DataRow dr in dt_item_adicion.Rows)
-					dt_resumen.Rows.Add("ConectorItemAdicion",dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
+					dt_resumen.Rows.Add("ConectorItemAdicion", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
 			}
 		}
 
@@ -633,7 +633,7 @@ namespace NegociacionesLogycaColabora
 			if (dt_item_cotizacion.Rows.Count > 0)
 			{
 				foreach (DataRow dr in dt_item_cotizacion.Rows)
-					dt_resumen.Rows.Add("ConectorItemCotizacion",dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
+					dt_resumen.Rows.Add("ConectorItemCotizacion", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
 			}
 		}
 
@@ -739,7 +739,7 @@ namespace NegociacionesLogycaColabora
 			if (dt_item_criterio.Rows.Count > 0)
 			{
 				foreach (DataRow dr in dt_item_criterio.Rows)
-					dt_resumen.Rows.Add("ConectorItemCriterio",dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
+					dt_resumen.Rows.Add("ConectorItemCriterio", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
 			}
 		}
 
@@ -883,7 +883,7 @@ namespace NegociacionesLogycaColabora
 			if (dt_item_desc_tec.Rows.Count > 0)
 			{
 				foreach (DataRow dr in dt_item_desc_tec.Rows)
-					dt_resumen.Rows.Add("ItemDescripcionTecnica",dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
+					dt_resumen.Rows.Add("ItemDescripcionTecnica", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
 			}
 		}
 
@@ -1129,7 +1129,7 @@ namespace NegociacionesLogycaColabora
 			if (dt_item_params.Rows.Count > 0)
 			{
 				foreach (DataRow dr in dt_item_params.Rows)
-					dt_resumen.Rows.Add("ItemParametrosPlaneacion",dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
+					dt_resumen.Rows.Add("ItemParametrosPlaneacion", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
 			}
 		}
 
@@ -1179,7 +1179,7 @@ namespace NegociacionesLogycaColabora
 								<Usuario>ws_importar_mega</Usuario>
 								<Clave>rLFgx)bL</Clave>
 								<Datos>
-									<Linea>{REG_INICIO}</Linea>";
+									<Linea>{REG_INICIO}</Linea>" + Environment.NewLine;
 
 
 			Datos datos = new Datos();
@@ -1268,7 +1268,7 @@ namespace NegociacionesLogycaColabora
 			if (dt_item_precio_vta.Rows.Count > 0)
 			{
 				foreach (DataRow dr in dt_item_precio_vta.Rows)
-					dt_resumen.Rows.Add("ItemPreciosVenta",dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
+					dt_resumen.Rows.Add("ItemPreciosVenta", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
 			}
 		}
 
@@ -1499,7 +1499,7 @@ namespace NegociacionesLogycaColabora
 					if (dt_item_portafolio.Rows.Count > 0)
 					{
 						foreach (DataRow dr in dt_item_portafolio.Rows)
-							dt_resumen.Rows.Add("ItemPortafolios",dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
+							dt_resumen.Rows.Add("ItemPortafolios", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
 					}
 				}
 			}
@@ -1645,7 +1645,144 @@ namespace NegociacionesLogycaColabora
 			if (dt_item_cod_barra.Rows.Count > 0)
 			{
 				foreach (DataRow dr in dt_item_cod_barra.Rows)
-					dt_resumen.Rows.Add("ItemCodigoBarras",dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
+					dt_resumen.Rows.Add("ItemCodigoBarras", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
+			}
+		}
+
+		public void CrearConectorItemPum(string numero_doc, string nombre_doc, string gln_prov, string gln_comp, List<string> items)//ESTE
+		{
+			////////////////////////VARIABLES///////////////////////
+			string movimientos = "";
+			int nroReg = 2;
+
+			string REG_INICIO = "000000100000001001";
+
+			string F_NUMERO_REG = ""; //Numerico 7 - Numero consecutivo
+			string F_TIPO_REG = "0753"; //Numerico 4 
+			string F_SUBTIPO_REG = "01"; //Numerico 2 - Valor fijo = 00
+			string F_VERSION_REG = "02"; //Numerico 2 - Version = 01
+			string F_CIA = "001"; // Numerico 3 - compañía a la cual pertenece la informacion del registro
+			string F_ACTUALIZA_REG = "0";
+			string f120_id_item = "0000000";
+
+			string f120_referencia_item = "";
+			string f753_id_grupo_entidad = "UnoEESuper_items _abc".PadRight(30, ' ');
+			string f753_id_entidad = "001".PadRight(30, ' ');
+
+			string f753_id_atributo = "";
+			string f753_dato_numerico = "";
+			string f753_dato_texto = " ".PadRight(2000, ' ');
+			string f753_dato_fecha_hora = " ".PadRight(8, ' ');
+			string f753_id_maestro = "";
+			string f753_id_maestro_detalle = "";
+			string f753_id_tipo_entidad = "M120".PadRight(8, ' ');
+			string f753_nro_fila = "0000";
+			string REG_CIERRE = "";
+
+			/*FileStream fs = null;
+
+			fs = File.Create(nombreArchivo);
+
+			AddText(fs, REG_INICIO);*/
+
+			WSUNOEE.WSUNOEE wsunoee = new WSUNOEE.WSUNOEE();
+			int err = 1;
+			string xml_item_pum = $@"<?xml version=""1.0"" encoding=""utf-8""?>
+							 <Importar>
+								<NombreConexion>unoee_invercomer</NombreConexion>
+								<IdCia>1</IdCia>
+								<Usuario>ws_importar_mega</Usuario>
+								<Clave>rLFgx)bL</Clave>
+								<Datos>
+									<Linea>{REG_INICIO}</Linea>";
+
+			Datos datos = new Datos();
+			foreach (string item in items)
+			{
+				List<List<object>> info_item = datos.ObtenerDatosItems(numero_doc, nombre_doc, gln_prov, gln_comp, item, 11);
+				//if (Convert.ToBoolean(info_item[0][11]) == true)
+				//{
+				for (int i = 0; i < 2; i++)
+				{
+					movimientos = "";
+					F_NUMERO_REG = nroReg.ToString().PadLeft(7, '0');
+					movimientos += F_NUMERO_REG;
+
+					movimientos += F_TIPO_REG;
+
+					movimientos += F_SUBTIPO_REG;
+
+					movimientos += F_VERSION_REG;
+
+					movimientos += F_CIA;
+
+					movimientos += F_ACTUALIZA_REG;
+
+					movimientos += f120_id_item;
+
+					f120_referencia_item = Convert.ToString(info_item[0][29]).Trim().PadRight(50, ' ');
+
+					movimientos += f120_referencia_item;
+
+					movimientos += f753_id_grupo_entidad;
+
+					movimientos += f753_id_entidad;
+					switch (i)
+					{
+						case 0:
+							f753_id_atributo = "UND".PadRight(30, ' ');
+							f753_dato_numerico = "00000000000000000.0000000000";
+							break;
+						case 1:
+							f753_id_atributo = "FACTOR".PadRight(30, ' ');
+							f753_dato_numerico = FormatoCantidadPrecio(Convert.ToString(info_item[0][24]).Trim(), 17, 10); ;
+							break;
+					}
+					movimientos += f753_id_atributo;
+					movimientos += f753_dato_numerico;
+					movimientos += f753_dato_texto;
+					movimientos += f753_dato_fecha_hora;
+
+					switch (i)
+					{
+						case 0:
+							f753_id_maestro = "UNIDAD PUM";
+							f753_id_maestro_detalle = Convert.ToString(info_item[0][28]).Trim().PadRight(20, ' ');
+							break;
+						case 1:
+							f753_id_maestro = " ".PadRight(10, ' ');
+							f753_id_maestro_detalle = " ".PadRight(20, ' ');
+							break;
+					}
+					movimientos += f753_id_maestro;
+					movimientos += f753_id_maestro_detalle;
+					movimientos += f753_id_tipo_entidad;
+					movimientos += f753_nro_fila;
+					nroReg++;
+					//AddText(fs, movimientos);
+					xml_item_pum += $"<Linea>{movimientos}</Linea>{Environment.NewLine}";
+				}
+
+				//}
+			}
+
+			REG_CIERRE = nroReg.ToString().PadLeft(7, '0') + "99990001001";
+
+			//AddText(fs, REG_CIERRE);
+
+			xml_item_pum += $@"<Linea>{REG_CIERRE}</Linea>
+                                </Datos>
+                               </Importar> ";
+
+			//fs.Close();
+			wsunoee.Timeout = 600000;
+			DataSet ds_item_pum = wsunoee.ImportarXML(xml_item_pum, ref err);
+			DataTable dt_item_pum = ds_item_pum.Tables[0];
+
+			if (dt_item_pum.Rows.Count > 0)
+			{
+				foreach (DataRow dr in dt_item_pum.Rows)
+					dt_resumen.Rows.Add("ItemPum", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
 			}
 		}
 
@@ -1871,7 +2008,7 @@ namespace NegociacionesLogycaColabora
 			if (dt_cambio_precio.Rows.Count > 0)
 			{
 				foreach (DataRow dr in dt_cambio_precio.Rows)
-					dt_resumen.Rows.Add("CambioPrecio",dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
+					dt_resumen.Rows.Add("CambioPrecio", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
 			}
 		}
 
@@ -2038,9 +2175,9 @@ namespace NegociacionesLogycaColabora
 			{
 				throw new Exception("Error al ordenar los archivos: " + ex.Message);
 			}
-			if (errores!="")
+			if (errores != "")
 			{
-				MessageBox.Show(errores,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show(errores, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 

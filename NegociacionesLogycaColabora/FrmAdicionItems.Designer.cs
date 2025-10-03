@@ -132,26 +132,26 @@
 			this.txt_factor_peso_emp = new System.Windows.Forms.TextBox();
 			this.lbl_tit_und_orden = new System.Windows.Forms.Label();
 			this.cmb_und_orden = new System.Windows.Forms.ComboBox();
-			this.label22 = new System.Windows.Forms.Label();
-			this.label18 = new System.Windows.Forms.Label();
+			this.lbl_tit_factor_peso_empaque = new System.Windows.Forms.Label();
+			this.lbl_tit_factor_orden = new System.Windows.Forms.Label();
 			this.lbl_tit_peso_inv = new System.Windows.Forms.Label();
 			this.txt_factor_peso_orden = new System.Windows.Forms.TextBox();
 			this.txt_fact_und_orden = new System.Windows.Forms.TextBox();
 			this.lbl_tit_und_emp = new System.Windows.Forms.Label();
-			this.label20 = new System.Windows.Forms.Label();
+			this.lbl_tit_factor_peso_orden = new System.Windows.Forms.Label();
 			this.cmb_und_emp = new System.Windows.Forms.ComboBox();
-			this.label16 = new System.Windows.Forms.Label();
+			this.lbl_tit_factor_empaque = new System.Windows.Forms.Label();
 			this.txt_peso_und_inv = new System.Windows.Forms.TextBox();
 			this.txt_fact_und_emp = new System.Windows.Forms.TextBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.label19 = new System.Windows.Forms.Label();
+			this.lbl_tit_desc_und_emp = new System.Windows.Forms.Label();
 			this.label35 = new System.Windows.Forms.Label();
 			this.label43 = new System.Windows.Forms.Label();
 			this.label56 = new System.Windows.Forms.Label();
 			this.txt_ancho_emp = new System.Windows.Forms.TextBox();
 			this.txt_profundo_emp = new System.Windows.Forms.TextBox();
 			this.txt_alto_emp = new System.Windows.Forms.TextBox();
-			this.label17 = new System.Windows.Forms.Label();
+			this.lbl_tit_desc_und_inv = new System.Windows.Forms.Label();
 			this.txt_ancho_inv = new System.Windows.Forms.TextBox();
 			this.txt_profundo_inv = new System.Windows.Forms.TextBox();
 			this.label29 = new System.Windows.Forms.Label();
@@ -248,12 +248,15 @@
 			this.label47 = new System.Windows.Forms.Label();
 			this.label36 = new System.Windows.Forms.Label();
 			this.tabPrecio = new System.Windows.Forms.TabPage();
+			this.txt_und_factor = new System.Windows.Forms.TextBox();
+			this.lbl_tit_und_factor = new System.Windows.Forms.Label();
+			this.txt_factor = new System.Windows.Forms.TextBox();
+			this.lbl_tit_factor = new System.Windows.Forms.Label();
 			this.btn_agregar_todos_precio_vta = new System.Windows.Forms.Button();
 			this.chk_todas = new System.Windows.Forms.CheckBox();
 			this.clb_lista_precios = new System.Windows.Forms.CheckedListBox();
 			this._contextMenuStrip_listas_precio = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.actualizarListasPrecioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.label55 = new System.Windows.Forms.Label();
 			this.txt_margen = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.chk_fecha_inact = new System.Windows.Forms.CheckBox();
@@ -313,6 +316,8 @@
 			this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.btn_todos = new System.Windows.Forms.Button();
 			this.tabOtros = new System.Windows.Forms.TabPage();
+			this.lbl_calif_cant_cont = new System.Windows.Forms.Label();
+			this.label25 = new System.Windows.Forms.Label();
 			this.lbl_nro = new System.Windows.Forms.Label();
 			this.lbl_nro_imgs = new System.Windows.Forms.Label();
 			this.btn_img = new System.Windows.Forms.Button();
@@ -746,9 +751,10 @@
 			// 
 			// lbl_impuesto
 			// 
+			this.lbl_impuesto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.lbl_impuesto.AutoSize = true;
 			this.lbl_impuesto.Font = new System.Drawing.Font("Segoe UI", 5.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lbl_impuesto.Location = new System.Drawing.Point(509, 185);
+			this.lbl_impuesto.Location = new System.Drawing.Point(512, 200);
 			this.lbl_impuesto.Name = "lbl_impuesto";
 			this.lbl_impuesto.Size = new System.Drawing.Size(0, 10);
 			this.lbl_impuesto.TabIndex = 20;
@@ -1141,15 +1147,15 @@
 			this.groupBox3.Controls.Add(this.txt_factor_peso_emp);
 			this.groupBox3.Controls.Add(this.lbl_tit_und_orden);
 			this.groupBox3.Controls.Add(this.cmb_und_orden);
-			this.groupBox3.Controls.Add(this.label22);
-			this.groupBox3.Controls.Add(this.label18);
+			this.groupBox3.Controls.Add(this.lbl_tit_factor_peso_empaque);
+			this.groupBox3.Controls.Add(this.lbl_tit_factor_orden);
 			this.groupBox3.Controls.Add(this.lbl_tit_peso_inv);
 			this.groupBox3.Controls.Add(this.txt_factor_peso_orden);
 			this.groupBox3.Controls.Add(this.txt_fact_und_orden);
 			this.groupBox3.Controls.Add(this.lbl_tit_und_emp);
-			this.groupBox3.Controls.Add(this.label20);
+			this.groupBox3.Controls.Add(this.lbl_tit_factor_peso_orden);
 			this.groupBox3.Controls.Add(this.cmb_und_emp);
-			this.groupBox3.Controls.Add(this.label16);
+			this.groupBox3.Controls.Add(this.lbl_tit_factor_empaque);
 			this.groupBox3.Controls.Add(this.txt_peso_und_inv);
 			this.groupBox3.Controls.Add(this.txt_fact_und_emp);
 			this.groupBox3.Location = new System.Drawing.Point(22, 237);
@@ -1200,6 +1206,7 @@
 			this.txt_factor_peso_emp.TabIndex = 15;
 			this.txt_factor_peso_emp.TabStop = false;
 			this.txt_factor_peso_emp.Text = "0";
+			this.txt_factor_peso_emp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
 			// 
 			// lbl_tit_und_orden
 			// 
@@ -1220,25 +1227,25 @@
 			this.cmb_und_orden.Size = new System.Drawing.Size(235, 21);
 			this.cmb_und_orden.TabIndex = 5;
 			// 
-			// label22
+			// lbl_tit_factor_peso_empaque
 			// 
-			this.label22.AutoSize = true;
-			this.label22.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label22.Location = new System.Drawing.Point(332, 131);
-			this.label22.Name = "label22";
-			this.label22.Size = new System.Drawing.Size(34, 13);
-			this.label22.TabIndex = 14;
-			this.label22.Text = "Peso:";
+			this.lbl_tit_factor_peso_empaque.AutoSize = true;
+			this.lbl_tit_factor_peso_empaque.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_tit_factor_peso_empaque.Location = new System.Drawing.Point(332, 131);
+			this.lbl_tit_factor_peso_empaque.Name = "lbl_tit_factor_peso_empaque";
+			this.lbl_tit_factor_peso_empaque.Size = new System.Drawing.Size(34, 13);
+			this.lbl_tit_factor_peso_empaque.TabIndex = 14;
+			this.lbl_tit_factor_peso_empaque.Text = "Peso:";
 			// 
-			// label18
+			// lbl_tit_factor_orden
 			// 
-			this.label18.AutoSize = true;
-			this.label18.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label18.Location = new System.Drawing.Point(249, 79);
-			this.label18.Name = "label18";
-			this.label18.Size = new System.Drawing.Size(42, 13);
-			this.label18.TabIndex = 6;
-			this.label18.Text = "Factor:";
+			this.lbl_tit_factor_orden.AutoSize = true;
+			this.lbl_tit_factor_orden.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_tit_factor_orden.Location = new System.Drawing.Point(249, 79);
+			this.lbl_tit_factor_orden.Name = "lbl_tit_factor_orden";
+			this.lbl_tit_factor_orden.Size = new System.Drawing.Size(42, 13);
+			this.lbl_tit_factor_orden.TabIndex = 6;
+			this.lbl_tit_factor_orden.Text = "Factor:";
 			// 
 			// lbl_tit_peso_inv
 			// 
@@ -1262,6 +1269,7 @@
 			this.txt_factor_peso_orden.TabIndex = 9;
 			this.txt_factor_peso_orden.TabStop = false;
 			this.txt_factor_peso_orden.Text = "0";
+			this.txt_factor_peso_orden.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
 			// 
 			// txt_fact_und_orden
 			// 
@@ -1274,6 +1282,8 @@
 			this.txt_fact_und_orden.TabIndex = 7;
 			this.txt_fact_und_orden.TabStop = false;
 			this.txt_fact_und_orden.Text = "0";
+			this.txt_fact_und_orden.TextChanged += new System.EventHandler(this.txt_peso_TextChanged);
+			this.txt_fact_und_orden.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
 			// 
 			// lbl_tit_und_emp
 			// 
@@ -1285,15 +1295,15 @@
 			this.lbl_tit_und_emp.TabIndex = 10;
 			this.lbl_tit_und_emp.Text = "Unidad de Empaque:";
 			// 
-			// label20
+			// lbl_tit_factor_peso_orden
 			// 
-			this.label20.AutoSize = true;
-			this.label20.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label20.Location = new System.Drawing.Point(325, 78);
-			this.label20.Name = "label20";
-			this.label20.Size = new System.Drawing.Size(34, 13);
-			this.label20.TabIndex = 8;
-			this.label20.Text = "Peso:";
+			this.lbl_tit_factor_peso_orden.AutoSize = true;
+			this.lbl_tit_factor_peso_orden.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_tit_factor_peso_orden.Location = new System.Drawing.Point(325, 78);
+			this.lbl_tit_factor_peso_orden.Name = "lbl_tit_factor_peso_orden";
+			this.lbl_tit_factor_peso_orden.Size = new System.Drawing.Size(34, 13);
+			this.lbl_tit_factor_peso_orden.TabIndex = 8;
+			this.lbl_tit_factor_peso_orden.Text = "Peso:";
 			// 
 			// cmb_und_emp
 			// 
@@ -1305,15 +1315,15 @@
 			this.cmb_und_emp.TabIndex = 11;
 			this.cmb_und_emp.SelectedValueChanged += new System.EventHandler(this.cmb_und_emp_SelectedValueChanged);
 			// 
-			// label16
+			// lbl_tit_factor_empaque
 			// 
-			this.label16.AutoSize = true;
-			this.label16.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label16.Location = new System.Drawing.Point(252, 133);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(42, 13);
-			this.label16.TabIndex = 12;
-			this.label16.Text = "Factor:";
+			this.lbl_tit_factor_empaque.AutoSize = true;
+			this.lbl_tit_factor_empaque.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_tit_factor_empaque.Location = new System.Drawing.Point(252, 133);
+			this.lbl_tit_factor_empaque.Name = "lbl_tit_factor_empaque";
+			this.lbl_tit_factor_empaque.Size = new System.Drawing.Size(42, 13);
+			this.lbl_tit_factor_empaque.TabIndex = 12;
+			this.lbl_tit_factor_empaque.Text = "Factor:";
 			// 
 			// txt_peso_und_inv
 			// 
@@ -1322,11 +1332,12 @@
 			this.txt_peso_und_inv.Location = new System.Drawing.Point(250, 44);
 			this.txt_peso_und_inv.MaxLength = 11;
 			this.txt_peso_und_inv.Name = "txt_peso_und_inv";
-			this.txt_peso_und_inv.ReadOnly = true;
 			this.txt_peso_und_inv.Size = new System.Drawing.Size(70, 22);
 			this.txt_peso_und_inv.TabIndex = 3;
 			this.txt_peso_und_inv.TabStop = false;
 			this.txt_peso_und_inv.Text = "0";
+			this.txt_peso_und_inv.TextChanged += new System.EventHandler(this.txt_peso_TextChanged);
+			this.txt_peso_und_inv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
 			// 
 			// txt_fact_und_emp
 			// 
@@ -1339,18 +1350,20 @@
 			this.txt_fact_und_emp.TabIndex = 13;
 			this.txt_fact_und_emp.TabStop = false;
 			this.txt_fact_und_emp.Text = "0";
+			this.txt_fact_und_emp.TextChanged += new System.EventHandler(this.txt_peso_TextChanged);
+			this.txt_fact_und_emp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
 			// 
 			// groupBox2
 			// 
 			this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox2.Controls.Add(this.label19);
+			this.groupBox2.Controls.Add(this.lbl_tit_desc_und_emp);
 			this.groupBox2.Controls.Add(this.label35);
 			this.groupBox2.Controls.Add(this.label43);
 			this.groupBox2.Controls.Add(this.label56);
 			this.groupBox2.Controls.Add(this.txt_ancho_emp);
 			this.groupBox2.Controls.Add(this.txt_profundo_emp);
 			this.groupBox2.Controls.Add(this.txt_alto_emp);
-			this.groupBox2.Controls.Add(this.label17);
+			this.groupBox2.Controls.Add(this.lbl_tit_desc_und_inv);
 			this.groupBox2.Controls.Add(this.txt_ancho_inv);
 			this.groupBox2.Controls.Add(this.txt_profundo_inv);
 			this.groupBox2.Controls.Add(this.label29);
@@ -1364,15 +1377,15 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Descripción técnica";
 			// 
-			// label19
+			// lbl_tit_desc_und_emp
 			// 
-			this.label19.AutoSize = true;
-			this.label19.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label19.Location = new System.Drawing.Point(154, 25);
-			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(83, 13);
-			this.label19.TabIndex = 48;
-			this.label19.Text = "Und. Empaque";
+			this.lbl_tit_desc_und_emp.AutoSize = true;
+			this.lbl_tit_desc_und_emp.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_tit_desc_und_emp.Location = new System.Drawing.Point(154, 25);
+			this.lbl_tit_desc_und_emp.Name = "lbl_tit_desc_und_emp";
+			this.lbl_tit_desc_und_emp.Size = new System.Drawing.Size(83, 13);
+			this.lbl_tit_desc_und_emp.TabIndex = 48;
+			this.lbl_tit_desc_und_emp.Text = "Und. Empaque";
 			// 
 			// label35
 			// 
@@ -1408,10 +1421,10 @@
 			this.txt_ancho_emp.Location = new System.Drawing.Point(152, 72);
 			this.txt_ancho_emp.MaxLength = 11;
 			this.txt_ancho_emp.Name = "txt_ancho_emp";
-			this.txt_ancho_emp.ReadOnly = true;
 			this.txt_ancho_emp.Size = new System.Drawing.Size(73, 22);
 			this.txt_ancho_emp.TabIndex = 42;
 			this.txt_ancho_emp.TabStop = false;
+			this.txt_ancho_emp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
 			// 
 			// txt_profundo_emp
 			// 
@@ -1420,10 +1433,10 @@
 			this.txt_profundo_emp.Location = new System.Drawing.Point(152, 99);
 			this.txt_profundo_emp.MaxLength = 11;
 			this.txt_profundo_emp.Name = "txt_profundo_emp";
-			this.txt_profundo_emp.ReadOnly = true;
 			this.txt_profundo_emp.Size = new System.Drawing.Size(73, 22);
 			this.txt_profundo_emp.TabIndex = 44;
 			this.txt_profundo_emp.TabStop = false;
+			this.txt_profundo_emp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
 			// 
 			// txt_alto_emp
 			// 
@@ -1432,20 +1445,20 @@
 			this.txt_alto_emp.Location = new System.Drawing.Point(152, 45);
 			this.txt_alto_emp.MaxLength = 11;
 			this.txt_alto_emp.Name = "txt_alto_emp";
-			this.txt_alto_emp.ReadOnly = true;
 			this.txt_alto_emp.Size = new System.Drawing.Size(73, 22);
 			this.txt_alto_emp.TabIndex = 40;
 			this.txt_alto_emp.TabStop = false;
+			this.txt_alto_emp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
 			// 
-			// label17
+			// lbl_tit_desc_und_inv
 			// 
-			this.label17.AutoSize = true;
-			this.label17.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label17.Location = new System.Drawing.Point(61, 25);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(87, 13);
-			this.label17.TabIndex = 38;
-			this.label17.Text = "Und. Inventario";
+			this.lbl_tit_desc_und_inv.AutoSize = true;
+			this.lbl_tit_desc_und_inv.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_tit_desc_und_inv.Location = new System.Drawing.Point(61, 25);
+			this.lbl_tit_desc_und_inv.Name = "lbl_tit_desc_und_inv";
+			this.lbl_tit_desc_und_inv.Size = new System.Drawing.Size(87, 13);
+			this.lbl_tit_desc_und_inv.TabIndex = 38;
+			this.lbl_tit_desc_und_inv.Text = "Und. Inventario";
 			// 
 			// txt_ancho_inv
 			// 
@@ -1454,10 +1467,10 @@
 			this.txt_ancho_inv.Location = new System.Drawing.Point(75, 72);
 			this.txt_ancho_inv.MaxLength = 11;
 			this.txt_ancho_inv.Name = "txt_ancho_inv";
-			this.txt_ancho_inv.ReadOnly = true;
 			this.txt_ancho_inv.Size = new System.Drawing.Size(73, 22);
 			this.txt_ancho_inv.TabIndex = 3;
 			this.txt_ancho_inv.TabStop = false;
+			this.txt_ancho_inv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
 			// 
 			// txt_profundo_inv
 			// 
@@ -1466,10 +1479,10 @@
 			this.txt_profundo_inv.Location = new System.Drawing.Point(75, 99);
 			this.txt_profundo_inv.MaxLength = 11;
 			this.txt_profundo_inv.Name = "txt_profundo_inv";
-			this.txt_profundo_inv.ReadOnly = true;
 			this.txt_profundo_inv.Size = new System.Drawing.Size(73, 22);
 			this.txt_profundo_inv.TabIndex = 5;
 			this.txt_profundo_inv.TabStop = false;
+			this.txt_profundo_inv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
 			// 
 			// label29
 			// 
@@ -1498,10 +1511,10 @@
 			this.txt_alto_inv.Location = new System.Drawing.Point(75, 45);
 			this.txt_alto_inv.MaxLength = 11;
 			this.txt_alto_inv.Name = "txt_alto_inv";
-			this.txt_alto_inv.ReadOnly = true;
 			this.txt_alto_inv.Size = new System.Drawing.Size(73, 22);
 			this.txt_alto_inv.TabIndex = 1;
 			this.txt_alto_inv.TabStop = false;
+			this.txt_alto_inv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
 			// 
 			// label28
 			// 
@@ -2617,10 +2630,13 @@
 			// 
 			// tabPrecio
 			// 
+			this.tabPrecio.Controls.Add(this.txt_und_factor);
+			this.tabPrecio.Controls.Add(this.lbl_tit_und_factor);
+			this.tabPrecio.Controls.Add(this.txt_factor);
+			this.tabPrecio.Controls.Add(this.lbl_tit_factor);
 			this.tabPrecio.Controls.Add(this.btn_agregar_todos_precio_vta);
 			this.tabPrecio.Controls.Add(this.chk_todas);
 			this.tabPrecio.Controls.Add(this.clb_lista_precios);
-			this.tabPrecio.Controls.Add(this.label55);
 			this.tabPrecio.Controls.Add(this.txt_margen);
 			this.tabPrecio.Controls.Add(this.label7);
 			this.tabPrecio.Controls.Add(this.chk_fecha_inact);
@@ -2647,6 +2663,48 @@
 			this.tabPrecio.Text = "Precios de Venta";
 			this.tabPrecio.UseVisualStyleBackColor = true;
 			// 
+			// txt_und_factor
+			// 
+			this.txt_und_factor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.txt_und_factor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txt_und_factor.Location = new System.Drawing.Point(220, 97);
+			this.txt_und_factor.MaxLength = 20;
+			this.txt_und_factor.Name = "txt_und_factor";
+			this.txt_und_factor.Size = new System.Drawing.Size(34, 22);
+			this.txt_und_factor.TabIndex = 56;
+			this.txt_und_factor.TabStop = false;
+			// 
+			// lbl_tit_und_factor
+			// 
+			this.lbl_tit_und_factor.AutoSize = true;
+			this.lbl_tit_und_factor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_tit_und_factor.Location = new System.Drawing.Point(166, 102);
+			this.lbl_tit_und_factor.Name = "lbl_tit_und_factor";
+			this.lbl_tit_und_factor.Size = new System.Drawing.Size(48, 13);
+			this.lbl_tit_und_factor.TabIndex = 55;
+			this.lbl_tit_und_factor.Text = "Unidad:";
+			// 
+			// txt_factor
+			// 
+			this.txt_factor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.txt_factor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txt_factor.Location = new System.Drawing.Point(62, 97);
+			this.txt_factor.MaxLength = 20;
+			this.txt_factor.Name = "txt_factor";
+			this.txt_factor.Size = new System.Drawing.Size(99, 22);
+			this.txt_factor.TabIndex = 54;
+			this.txt_factor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
+			// 
+			// lbl_tit_factor
+			// 
+			this.lbl_tit_factor.AutoSize = true;
+			this.lbl_tit_factor.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lbl_tit_factor.Location = new System.Drawing.Point(15, 102);
+			this.lbl_tit_factor.Name = "lbl_tit_factor";
+			this.lbl_tit_factor.Size = new System.Drawing.Size(42, 13);
+			this.lbl_tit_factor.TabIndex = 53;
+			this.lbl_tit_factor.Text = "Factor:";
+			// 
 			// btn_agregar_todos_precio_vta
 			// 
 			this.btn_agregar_todos_precio_vta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(65)))), ((int)(((byte)(148)))));
@@ -2665,10 +2723,11 @@
 			// chk_todas
 			// 
 			this.chk_todas.AutoSize = true;
-			this.chk_todas.Location = new System.Drawing.Point(8, 125);
+			this.chk_todas.Location = new System.Drawing.Point(8, 142);
 			this.chk_todas.Name = "chk_todas";
-			this.chk_todas.Size = new System.Drawing.Size(15, 14);
+			this.chk_todas.Size = new System.Drawing.Size(128, 17);
 			this.chk_todas.TabIndex = 49;
+			this.chk_todas.Text = "Listas de precio: (LP)";
 			this.chk_todas.UseVisualStyleBackColor = true;
 			this.chk_todas.CheckedChanged += new System.EventHandler(this.chk_todas_CheckedChanged);
 			// 
@@ -2676,9 +2735,9 @@
 			// 
 			this.clb_lista_precios.ContextMenuStrip = this._contextMenuStrip_listas_precio;
 			this.clb_lista_precios.FormattingEnabled = true;
-			this.clb_lista_precios.Location = new System.Drawing.Point(8, 147);
+			this.clb_lista_precios.Location = new System.Drawing.Point(8, 164);
 			this.clb_lista_precios.Name = "clb_lista_precios";
-			this.clb_lista_precios.Size = new System.Drawing.Size(376, 208);
+			this.clb_lista_precios.Size = new System.Drawing.Size(376, 191);
 			this.clb_lista_precios.Sorted = true;
 			this.clb_lista_precios.TabIndex = 51;
 			// 
@@ -2696,23 +2755,14 @@
 			this.actualizarListasPrecioToolStripMenuItem.Text = "Actualizar";
 			this.actualizarListasPrecioToolStripMenuItem.Click += new System.EventHandler(this.actualizarListasPrecioToolStripMenuItem_Click);
 			// 
-			// label55
-			// 
-			this.label55.AutoSize = true;
-			this.label55.Location = new System.Drawing.Point(29, 125);
-			this.label55.Name = "label55";
-			this.label55.Size = new System.Drawing.Size(109, 13);
-			this.label55.TabIndex = 50;
-			this.label55.Text = "Listas de precio: (LP)";
-			// 
 			// txt_margen
 			// 
 			this.txt_margen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.txt_margen.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.txt_margen.Location = new System.Drawing.Point(335, 41);
+			this.txt_margen.Location = new System.Drawing.Point(239, 39);
 			this.txt_margen.MaxLength = 20;
 			this.txt_margen.Name = "txt_margen";
-			this.txt_margen.Size = new System.Drawing.Size(49, 22);
+			this.txt_margen.Size = new System.Drawing.Size(34, 22);
 			this.txt_margen.TabIndex = 48;
 			this.txt_margen.TabStop = false;
 			this.txt_margen.TextChanged += new System.EventHandler(this.txt_margen_TextChanged);
@@ -2722,7 +2772,7 @@
 			// 
 			this.label7.AutoSize = true;
 			this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label7.Location = new System.Drawing.Point(283, 45);
+			this.label7.Location = new System.Drawing.Point(175, 44);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(50, 13);
 			this.label7.TabIndex = 47;
@@ -2731,7 +2781,7 @@
 			// chk_fecha_inact
 			// 
 			this.chk_fecha_inact.AutoSize = true;
-			this.chk_fecha_inact.Location = new System.Drawing.Point(349, 72);
+			this.chk_fecha_inact.Location = new System.Drawing.Point(357, 74);
 			this.chk_fecha_inact.Name = "chk_fecha_inact";
 			this.chk_fecha_inact.Size = new System.Drawing.Size(15, 14);
 			this.chk_fecha_inact.TabIndex = 10;
@@ -2923,6 +2973,7 @@
 			this.txt_pvp.Name = "txt_pvp";
 			this.txt_pvp.Size = new System.Drawing.Size(99, 22);
 			this.txt_pvp.TabIndex = 5;
+			this.txt_pvp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SoloNumeros);
 			// 
 			// btn_agregar_precio
 			// 
@@ -2952,7 +3003,7 @@
 			// label54
 			// 
 			this.label54.AutoSize = true;
-			this.label54.Location = new System.Drawing.Point(175, 72);
+			this.label54.Location = new System.Drawing.Point(183, 74);
 			this.label54.Name = "label54";
 			this.label54.Size = new System.Drawing.Size(71, 13);
 			this.label54.TabIndex = 8;
@@ -2962,7 +3013,7 @@
 			// dtp_fecha_inact
 			// 
 			this.dtp_fecha_inact.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-			this.dtp_fecha_inact.Location = new System.Drawing.Point(251, 67);
+			this.dtp_fecha_inact.Location = new System.Drawing.Point(259, 69);
 			this.dtp_fecha_inact.Name = "dtp_fecha_inact";
 			this.dtp_fecha_inact.Size = new System.Drawing.Size(93, 22);
 			this.dtp_fecha_inact.TabIndex = 9;
@@ -3432,6 +3483,8 @@
 			// 
 			// tabOtros
 			// 
+			this.tabOtros.Controls.Add(this.lbl_calif_cant_cont);
+			this.tabOtros.Controls.Add(this.label25);
 			this.tabOtros.Controls.Add(this.lbl_nro);
 			this.tabOtros.Controls.Add(this.lbl_nro_imgs);
 			this.tabOtros.Controls.Add(this.btn_img);
@@ -3478,6 +3531,27 @@
 			this.tabOtros.Text = "Información Adicional";
 			this.tabOtros.UseVisualStyleBackColor = true;
 			// 
+			// lbl_calif_cant_cont
+			// 
+			this.lbl_calif_cant_cont.AutoEllipsis = true;
+			this.lbl_calif_cant_cont.Location = new System.Drawing.Point(509, 290);
+			this.lbl_calif_cant_cont.Name = "lbl_calif_cant_cont";
+			this.lbl_calif_cant_cont.Size = new System.Drawing.Size(226, 13);
+			this.lbl_calif_cant_cont.TabIndex = 62;
+			this.lbl_calif_cant_cont.Text = "...";
+			// 
+			// label25
+			// 
+			this.label25.AutoEllipsis = true;
+			this.label25.AutoSize = true;
+			this.label25.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label25.Location = new System.Drawing.Point(312, 287);
+			this.label25.Name = "label25";
+			this.label25.Size = new System.Drawing.Size(190, 17);
+			this.label25.TabIndex = 61;
+			this.label25.Text = "Calificador cantidad contenida";
+			this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
 			// lbl_nro
 			// 
 			this.lbl_nro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -3518,9 +3592,9 @@
 			// lbl_sublinea
 			// 
 			this.lbl_sublinea.AutoEllipsis = true;
-			this.lbl_sublinea.Location = new System.Drawing.Point(472, 364);
+			this.lbl_sublinea.Location = new System.Drawing.Point(509, 386);
 			this.lbl_sublinea.Name = "lbl_sublinea";
-			this.lbl_sublinea.Size = new System.Drawing.Size(235, 13);
+			this.lbl_sublinea.Size = new System.Drawing.Size(226, 13);
 			this.lbl_sublinea.TabIndex = 55;
 			this.lbl_sublinea.Text = "...";
 			// 
@@ -3529,7 +3603,7 @@
 			this.label77.AutoEllipsis = true;
 			this.label77.AutoSize = true;
 			this.label77.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label77.Location = new System.Drawing.Point(312, 361);
+			this.label77.Location = new System.Drawing.Point(312, 383);
 			this.label77.Name = "label77";
 			this.label77.Size = new System.Drawing.Size(59, 17);
 			this.label77.TabIndex = 54;
@@ -3539,9 +3613,9 @@
 			// lbl_unds_embalaje
 			// 
 			this.lbl_unds_embalaje.AutoEllipsis = true;
-			this.lbl_unds_embalaje.Location = new System.Drawing.Point(472, 298);
+			this.lbl_unds_embalaje.Location = new System.Drawing.Point(509, 322);
 			this.lbl_unds_embalaje.Name = "lbl_unds_embalaje";
-			this.lbl_unds_embalaje.Size = new System.Drawing.Size(235, 13);
+			this.lbl_unds_embalaje.Size = new System.Drawing.Size(226, 13);
 			this.lbl_unds_embalaje.TabIndex = 53;
 			this.lbl_unds_embalaje.Text = "...";
 			// 
@@ -3550,7 +3624,7 @@
 			this.label76.AutoEllipsis = true;
 			this.label76.AutoSize = true;
 			this.label76.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label76.Location = new System.Drawing.Point(312, 295);
+			this.label76.Location = new System.Drawing.Point(312, 319);
 			this.label76.Name = "label76";
 			this.label76.Size = new System.Drawing.Size(155, 17);
 			this.label76.TabIndex = 52;
@@ -3560,9 +3634,9 @@
 			// lbl_cant_cont
 			// 
 			this.lbl_cant_cont.AutoEllipsis = true;
-			this.lbl_cant_cont.Location = new System.Drawing.Point(472, 265);
+			this.lbl_cant_cont.Location = new System.Drawing.Point(509, 258);
 			this.lbl_cant_cont.Name = "lbl_cant_cont";
-			this.lbl_cant_cont.Size = new System.Drawing.Size(235, 13);
+			this.lbl_cant_cont.Size = new System.Drawing.Size(226, 13);
 			this.lbl_cant_cont.TabIndex = 51;
 			this.lbl_cant_cont.Text = "...";
 			// 
@@ -3571,7 +3645,7 @@
 			this.label74.AutoEllipsis = true;
 			this.label74.AutoSize = true;
 			this.label74.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label74.Location = new System.Drawing.Point(312, 262);
+			this.label74.Location = new System.Drawing.Point(312, 255);
 			this.label74.Name = "label74";
 			this.label74.Size = new System.Drawing.Size(126, 17);
 			this.label74.TabIndex = 50;
@@ -3581,9 +3655,9 @@
 			// lbl_proveedor
 			// 
 			this.lbl_proveedor.AutoEllipsis = true;
-			this.lbl_proveedor.Location = new System.Drawing.Point(472, 100);
+			this.lbl_proveedor.Location = new System.Drawing.Point(509, 98);
 			this.lbl_proveedor.Name = "lbl_proveedor";
-			this.lbl_proveedor.Size = new System.Drawing.Size(235, 13);
+			this.lbl_proveedor.Size = new System.Drawing.Size(226, 13);
 			this.lbl_proveedor.TabIndex = 49;
 			this.lbl_proveedor.Text = "...";
 			// 
@@ -3592,7 +3666,7 @@
 			this.label75.AutoEllipsis = true;
 			this.label75.AutoSize = true;
 			this.label75.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label75.Location = new System.Drawing.Point(312, 97);
+			this.label75.Location = new System.Drawing.Point(312, 95);
 			this.label75.Name = "label75";
 			this.label75.Size = new System.Drawing.Size(71, 17);
 			this.label75.TabIndex = 48;
@@ -3602,9 +3676,9 @@
 			// lbl_multiplos_desp
 			// 
 			this.lbl_multiplos_desp.AutoEllipsis = true;
-			this.lbl_multiplos_desp.Location = new System.Drawing.Point(472, 232);
+			this.lbl_multiplos_desp.Location = new System.Drawing.Point(509, 226);
 			this.lbl_multiplos_desp.Name = "lbl_multiplos_desp";
-			this.lbl_multiplos_desp.Size = new System.Drawing.Size(235, 13);
+			this.lbl_multiplos_desp.Size = new System.Drawing.Size(226, 13);
 			this.lbl_multiplos_desp.TabIndex = 47;
 			this.lbl_multiplos_desp.Text = "...";
 			// 
@@ -3613,7 +3687,7 @@
 			this.label73.AutoEllipsis = true;
 			this.label73.AutoSize = true;
 			this.label73.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label73.Location = new System.Drawing.Point(312, 229);
+			this.label73.Location = new System.Drawing.Point(312, 223);
 			this.label73.Name = "label73";
 			this.label73.Size = new System.Drawing.Size(145, 17);
 			this.label73.TabIndex = 46;
@@ -3623,9 +3697,9 @@
 			// lbl_tipo_emp
 			// 
 			this.lbl_tipo_emp.AutoEllipsis = true;
-			this.lbl_tipo_emp.Location = new System.Drawing.Point(472, 199);
+			this.lbl_tipo_emp.Location = new System.Drawing.Point(509, 194);
 			this.lbl_tipo_emp.Name = "lbl_tipo_emp";
-			this.lbl_tipo_emp.Size = new System.Drawing.Size(235, 13);
+			this.lbl_tipo_emp.Size = new System.Drawing.Size(226, 13);
 			this.lbl_tipo_emp.TabIndex = 45;
 			this.lbl_tipo_emp.Text = "...";
 			// 
@@ -3634,7 +3708,7 @@
 			this.label72.AutoEllipsis = true;
 			this.label72.AutoSize = true;
 			this.label72.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label72.Location = new System.Drawing.Point(312, 196);
+			this.label72.Location = new System.Drawing.Point(312, 191);
 			this.label72.Name = "label72";
 			this.label72.Size = new System.Drawing.Size(114, 17);
 			this.label72.TabIndex = 44;
@@ -3658,9 +3732,9 @@
 			// lbl_precauciones
 			// 
 			this.lbl_precauciones.AutoEllipsis = true;
-			this.lbl_precauciones.Location = new System.Drawing.Point(842, 166);
+			this.lbl_precauciones.Location = new System.Drawing.Point(879, 166);
 			this.lbl_precauciones.Name = "lbl_precauciones";
-			this.lbl_precauciones.Size = new System.Drawing.Size(235, 13);
+			this.lbl_precauciones.Size = new System.Drawing.Size(207, 13);
 			this.lbl_precauciones.TabIndex = 42;
 			this.lbl_precauciones.Text = "...";
 			// 
@@ -3669,7 +3743,7 @@
 			this.label71.AutoEllipsis = true;
 			this.label71.AutoSize = true;
 			this.label71.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label71.Location = new System.Drawing.Point(713, 163);
+			this.label71.Location = new System.Drawing.Point(750, 163);
 			this.label71.Name = "label71";
 			this.label71.Size = new System.Drawing.Size(87, 17);
 			this.label71.TabIndex = 41;
@@ -3679,9 +3753,9 @@
 			// lbl_advertencia
 			// 
 			this.lbl_advertencia.AutoEllipsis = true;
-			this.lbl_advertencia.Location = new System.Drawing.Point(842, 134);
+			this.lbl_advertencia.Location = new System.Drawing.Point(879, 134);
 			this.lbl_advertencia.Name = "lbl_advertencia";
-			this.lbl_advertencia.Size = new System.Drawing.Size(235, 13);
+			this.lbl_advertencia.Size = new System.Drawing.Size(207, 13);
 			this.lbl_advertencia.TabIndex = 40;
 			this.lbl_advertencia.Text = "...";
 			// 
@@ -3690,7 +3764,7 @@
 			this.label70.AutoEllipsis = true;
 			this.label70.AutoSize = true;
 			this.label70.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label70.Location = new System.Drawing.Point(713, 130);
+			this.label70.Location = new System.Drawing.Point(750, 130);
 			this.label70.Name = "label70";
 			this.label70.Size = new System.Drawing.Size(80, 17);
 			this.label70.TabIndex = 39;
@@ -3700,9 +3774,9 @@
 			// lbl_recomendaciones
 			// 
 			this.lbl_recomendaciones.AutoEllipsis = true;
-			this.lbl_recomendaciones.Location = new System.Drawing.Point(842, 98);
+			this.lbl_recomendaciones.Location = new System.Drawing.Point(879, 98);
 			this.lbl_recomendaciones.Name = "lbl_recomendaciones";
-			this.lbl_recomendaciones.Size = new System.Drawing.Size(235, 13);
+			this.lbl_recomendaciones.Size = new System.Drawing.Size(207, 13);
 			this.lbl_recomendaciones.TabIndex = 38;
 			this.lbl_recomendaciones.Text = "...";
 			// 
@@ -3711,7 +3785,7 @@
 			this.label68.AutoEllipsis = true;
 			this.label68.AutoSize = true;
 			this.label68.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label68.Location = new System.Drawing.Point(713, 97);
+			this.label68.Location = new System.Drawing.Point(750, 97);
 			this.label68.Name = "label68";
 			this.label68.Size = new System.Drawing.Size(117, 17);
 			this.label68.TabIndex = 37;
@@ -3721,9 +3795,9 @@
 			// lbl_sabor
 			// 
 			this.lbl_sabor.AutoEllipsis = true;
-			this.lbl_sabor.Location = new System.Drawing.Point(842, 63);
+			this.lbl_sabor.Location = new System.Drawing.Point(879, 63);
 			this.lbl_sabor.Name = "lbl_sabor";
-			this.lbl_sabor.Size = new System.Drawing.Size(235, 13);
+			this.lbl_sabor.Size = new System.Drawing.Size(207, 13);
 			this.lbl_sabor.TabIndex = 36;
 			this.lbl_sabor.Text = "...";
 			// 
@@ -3732,7 +3806,7 @@
 			this.label13.AutoEllipsis = true;
 			this.label13.AutoSize = true;
 			this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label13.Location = new System.Drawing.Point(713, 64);
+			this.label13.Location = new System.Drawing.Point(750, 64);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(43, 17);
 			this.label13.TabIndex = 35;
@@ -3742,9 +3816,9 @@
 			// lbl_fragancia
 			// 
 			this.lbl_fragancia.AutoEllipsis = true;
-			this.lbl_fragancia.Location = new System.Drawing.Point(842, 34);
+			this.lbl_fragancia.Location = new System.Drawing.Point(879, 34);
 			this.lbl_fragancia.Name = "lbl_fragancia";
-			this.lbl_fragancia.Size = new System.Drawing.Size(235, 13);
+			this.lbl_fragancia.Size = new System.Drawing.Size(207, 13);
 			this.lbl_fragancia.TabIndex = 34;
 			this.lbl_fragancia.Text = "...";
 			// 
@@ -3753,7 +3827,7 @@
 			this.label8.AutoEllipsis = true;
 			this.label8.AutoSize = true;
 			this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label8.Location = new System.Drawing.Point(713, 31);
+			this.label8.Location = new System.Drawing.Point(750, 31);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(66, 17);
 			this.label8.TabIndex = 33;
@@ -3763,9 +3837,9 @@
 			// lbl_linea
 			// 
 			this.lbl_linea.AutoEllipsis = true;
-			this.lbl_linea.Location = new System.Drawing.Point(472, 331);
+			this.lbl_linea.Location = new System.Drawing.Point(509, 354);
 			this.lbl_linea.Name = "lbl_linea";
-			this.lbl_linea.Size = new System.Drawing.Size(235, 13);
+			this.lbl_linea.Size = new System.Drawing.Size(226, 13);
 			this.lbl_linea.TabIndex = 32;
 			this.lbl_linea.Text = "...";
 			// 
@@ -3774,7 +3848,7 @@
 			this.label69.AutoEllipsis = true;
 			this.label69.AutoSize = true;
 			this.label69.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label69.Location = new System.Drawing.Point(312, 328);
+			this.label69.Location = new System.Drawing.Point(312, 351);
 			this.label69.Name = "label69";
 			this.label69.Size = new System.Drawing.Size(39, 17);
 			this.label69.TabIndex = 31;
@@ -3784,9 +3858,9 @@
 			// lbl_tipo_prod
 			// 
 			this.lbl_tipo_prod.AutoEllipsis = true;
-			this.lbl_tipo_prod.Location = new System.Drawing.Point(472, 166);
+			this.lbl_tipo_prod.Location = new System.Drawing.Point(509, 162);
 			this.lbl_tipo_prod.Name = "lbl_tipo_prod";
-			this.lbl_tipo_prod.Size = new System.Drawing.Size(235, 13);
+			this.lbl_tipo_prod.Size = new System.Drawing.Size(226, 13);
 			this.lbl_tipo_prod.TabIndex = 30;
 			this.lbl_tipo_prod.Text = "...";
 			// 
@@ -3795,7 +3869,7 @@
 			this.label66.AutoEllipsis = true;
 			this.label66.AutoSize = true;
 			this.label66.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label66.Location = new System.Drawing.Point(312, 163);
+			this.label66.Location = new System.Drawing.Point(312, 159);
 			this.label66.Name = "label66";
 			this.label66.Size = new System.Drawing.Size(113, 17);
 			this.label66.TabIndex = 29;
@@ -3805,9 +3879,9 @@
 			// lbl_reg_sanitario
 			// 
 			this.lbl_reg_sanitario.AutoEllipsis = true;
-			this.lbl_reg_sanitario.Location = new System.Drawing.Point(472, 133);
+			this.lbl_reg_sanitario.Location = new System.Drawing.Point(509, 130);
 			this.lbl_reg_sanitario.Name = "lbl_reg_sanitario";
-			this.lbl_reg_sanitario.Size = new System.Drawing.Size(235, 13);
+			this.lbl_reg_sanitario.Size = new System.Drawing.Size(226, 13);
 			this.lbl_reg_sanitario.TabIndex = 28;
 			this.lbl_reg_sanitario.Text = "...";
 			// 
@@ -3816,7 +3890,7 @@
 			this.label58.AutoEllipsis = true;
 			this.label58.AutoSize = true;
 			this.label58.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label58.Location = new System.Drawing.Point(312, 130);
+			this.label58.Location = new System.Drawing.Point(312, 127);
 			this.label58.Name = "label58";
 			this.label58.Size = new System.Drawing.Size(115, 17);
 			this.label58.TabIndex = 27;
@@ -3826,9 +3900,9 @@
 			// lbl_fabricante
 			// 
 			this.lbl_fabricante.AutoEllipsis = true;
-			this.lbl_fabricante.Location = new System.Drawing.Point(472, 67);
+			this.lbl_fabricante.Location = new System.Drawing.Point(509, 66);
 			this.lbl_fabricante.Name = "lbl_fabricante";
-			this.lbl_fabricante.Size = new System.Drawing.Size(235, 13);
+			this.lbl_fabricante.Size = new System.Drawing.Size(226, 13);
 			this.lbl_fabricante.TabIndex = 26;
 			this.lbl_fabricante.Text = "...";
 			// 
@@ -3837,7 +3911,7 @@
 			this.label9.AutoEllipsis = true;
 			this.label9.AutoSize = true;
 			this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label9.Location = new System.Drawing.Point(312, 64);
+			this.label9.Location = new System.Drawing.Point(312, 63);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(71, 17);
 			this.label9.TabIndex = 25;
@@ -3847,9 +3921,9 @@
 			// lbl_marca
 			// 
 			this.lbl_marca.AutoEllipsis = true;
-			this.lbl_marca.Location = new System.Drawing.Point(472, 34);
+			this.lbl_marca.Location = new System.Drawing.Point(509, 34);
 			this.lbl_marca.Name = "lbl_marca";
-			this.lbl_marca.Size = new System.Drawing.Size(235, 13);
+			this.lbl_marca.Size = new System.Drawing.Size(226, 13);
 			this.lbl_marca.TabIndex = 24;
 			this.lbl_marca.Text = "...";
 			// 
@@ -4157,17 +4231,17 @@
         private System.Windows.Forms.TabControl _tabControl;
         private System.Windows.Forms.TabPage tabItems;
         private System.Windows.Forms.TextBox txt_factor_peso_emp;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label lbl_tit_factor_peso_empaque;
         private System.Windows.Forms.TextBox txt_factor_peso_orden;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lbl_tit_factor_peso_orden;
         private System.Windows.Forms.TextBox txt_peso_und_inv;
         private System.Windows.Forms.TextBox txt_fact_und_emp;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lbl_tit_factor_empaque;
         private System.Windows.Forms.ComboBox cmb_und_emp;
         private System.Windows.Forms.Label lbl_tit_und_emp;
         private System.Windows.Forms.TextBox txt_fact_und_orden;
         private System.Windows.Forms.Label lbl_tit_peso_inv;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lbl_tit_factor_orden;
         private System.Windows.Forms.ComboBox cmb_und_orden;
         private System.Windows.Forms.Label lbl_tit_und_orden;
         private System.Windows.Forms.ComboBox cmb_und_inv;
@@ -4310,7 +4384,6 @@
         private System.Windows.Forms.TextBox txt_filtro_mayor;
         private System.Windows.Forms.CheckBox chk_todas;
         private System.Windows.Forms.CheckedListBox clb_lista_precios;
-        private System.Windows.Forms.Label label55;
         private System.Windows.Forms.Button btn_agregar_todos_precio_vta;
         private System.Windows.Forms.ContextMenuStrip _contextMenuStrip_listas_precio;
         private System.Windows.Forms.ToolStripMenuItem actualizarListasPrecioToolStripMenuItem;
@@ -4335,14 +4408,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column29;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column30;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label lbl_tit_desc_und_emp;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.TextBox txt_ancho_emp;
         private System.Windows.Forms.TextBox txt_profundo_emp;
         private System.Windows.Forms.TextBox txt_alto_emp;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label lbl_tit_desc_und_inv;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.CheckBox chk_ind_manuf;
         private System.Windows.Forms.CheckBox chk_ind_vta;
@@ -4431,5 +4504,11 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn col_cod_dif;
 		private System.Windows.Forms.DataGridViewTextBoxColumn col_dif;
 		private System.Windows.Forms.DataGridViewTextBoxColumn col_cod_cluster;
+		private System.Windows.Forms.Label lbl_calif_cant_cont;
+		private System.Windows.Forms.Label label25;
+		private System.Windows.Forms.TextBox txt_und_factor;
+		private System.Windows.Forms.Label lbl_tit_und_factor;
+		private System.Windows.Forms.TextBox txt_factor;
+		private System.Windows.Forms.Label lbl_tit_factor;
 	}
 }

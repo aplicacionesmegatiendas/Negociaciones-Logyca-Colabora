@@ -33,6 +33,7 @@ namespace NegociacionesLogycaColabora
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;            
             try
             {
                 if (rdb_descripcion.Checked.Equals(true))
@@ -49,7 +50,8 @@ namespace NegociacionesLogycaColabora
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+			Cursor = Cursors.Default;
+		}
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {

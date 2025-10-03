@@ -375,6 +375,14 @@ namespace NegociacionesLogycaColabora
 				{
 					errores += $"ConectorItemPortafolios: {ex.Message}{Environment.NewLine}";
 				}
+				try
+				{
+					conector.CrearConectorItemPum(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), /*Environment.GetFolderPath((Environment.SpecialFolder.MyDocuments)) + "\\CONECTORES\\ADICION\\5_AD_CONECTOR_ITEM_CODIGO_BARRAS_" + cmb_proveedores.Text + ".TXT",*/ lista_items);
+				}
+				catch (Exception ex)
+				{
+					errores += $"ConectorItemPum: {ex.Message}{Environment.NewLine}";
+				}
 
 				if (Conectores.dt_resumen.Rows.Count > 0)
 					new FrmResumen(Conectores.dt_resumen).ShowDialog(this);
@@ -476,6 +484,32 @@ namespace NegociacionesLogycaColabora
 					new FrmResumen(Conectores.dt_resumen).ShowDialog(this);
 				else if (errores != "")
 					MessageBox.Show(errores, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				else
+					MessageBox.Show("Conector creado correctamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+				Conectores.LiberarResumen();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			Cursor = Cursors.Default;
+		}
+
+		private void pumToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Cursor = Cursors.WaitCursor;
+			try
+			{
+				Datos datos = new Datos();
+
+				Conectores.PrepararResumen();
+
+				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value));
+				Conectores conector = new Conectores();
+				//conector.CrearBandejas();
+				conector.CrearConectorItemPum(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), lista_items);
+				if (Conectores.dt_resumen.Rows.Count > 0)
+					new FrmResumen(Conectores.dt_resumen).ShowDialog(this);
 				else
 					MessageBox.Show("Conector creado correctamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 				Conectores.LiberarResumen();

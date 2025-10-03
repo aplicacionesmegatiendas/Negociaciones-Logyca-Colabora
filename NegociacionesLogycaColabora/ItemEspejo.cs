@@ -395,6 +395,7 @@ namespace NegociacionesLogycaColabora
 				SqlConnection conn = new SqlConnection(Conexion.CadenaConexionUnoee);
 				conn.Open();
 				SqlCommand cmd = new SqlCommand(SQL, conn);
+                cmd.CommandTimeout = 600;
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 dt = new DataTable();
                 da.Fill(dt);

@@ -1,0 +1,37 @@
+# Carpetas de compilación
+bin/
+obj/
+
+# Archivos de usuario y configuración local
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.dbmdl
+*.log
+*.pdb
+*.cache
+
+# Archivos de pruebas
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Configuración de Visual Studio
+.vs/
+
+# Archivos de paquetes NuGet
+*.nupkg
+*.snupkg
+packages/
+
+# Archivos de publicación
+Publish/
+
+# Archivos de entorno
+*.env
+
+# Archivos de sistema (Windows)
+Thumbs.db
+Desktop.ini

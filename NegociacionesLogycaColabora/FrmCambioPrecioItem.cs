@@ -699,7 +699,7 @@ namespace NegociacionesLogycaColabora
 				panel_items.Width = panel_items.Width;
 				panel_items.Height = alto;
 				btn_tamaño.ImageIndex = 0;
-				//this.WindowState = FormWindowState.Normal;
+				this.WindowState = FormWindowState.Normal;
 			}
 		}
 

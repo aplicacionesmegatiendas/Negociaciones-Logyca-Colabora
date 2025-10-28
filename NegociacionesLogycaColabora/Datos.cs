@@ -2999,6 +2999,9 @@ namespace NegociacionesLogycaColabora
 							"isnull(dt_alto_emp,0) dt_alto_emp, " +
 							"isnull(dt_ancho_emp,0) dt_ancho_emp, " +
 							"isnull(dt_profundo_emp,0) dt_profundo_emp, " +
+							"isnull(dt_descripcion_tec1,'') dt_descripcion_tec1," +
+							"isnull(dt_descripcion_tec2,'') dt_descripcion_tec2, " +
+							"isnull(dt_descripcion_tec3,'') dt_descripcion_tec3, " +
 							"dt_aceptado " +
 						"FROM Documentos " +
 						"INNER JOIN DescripcionTecnica ON do_numero_doc=dt_numero_doc AND do_nombre_doc=dt_nombre_doc " +
@@ -3351,7 +3354,10 @@ namespace NegociacionesLogycaColabora
 						listado_descripcion_tecnica.Add(dr3.GetDecimal(9));
 						listado_descripcion_tecnica.Add(dr3.GetDecimal(10));
 						listado_descripcion_tecnica.Add(dr3.GetDecimal(11));
-						listado_descripcion_tecnica.Add(dr3.GetBoolean(12));
+						listado_descripcion_tecnica.Add(dr3.GetString(12));
+						listado_descripcion_tecnica.Add(dr3.GetString(13));
+						listado_descripcion_tecnica.Add(dr3.GetString(14));
+						listado_descripcion_tecnica.Add(dr3.GetBoolean(15));
 					}
 					dr3.Close();
 					conn.Close();
@@ -3973,7 +3979,15 @@ namespace NegociacionesLogycaColabora
 				cmd.Parameters.AddWithValue("@ALTO_EMP", Convert.ToDecimal(valores[4]));
 				cmd.Parameters.AddWithValue("@ANCHO_EMP", Convert.ToDecimal(valores[5]));
 				cmd.Parameters.AddWithValue("@PROFUNDO_EMP", Convert.ToDecimal(valores[6]));
-				cmd.Parameters.AddWithValue("@ACEPTADO", valores[7]);
+
+				string desc_tec1 = Convert.ToString(valores[7]);
+				cmd.Parameters.AddWithValue("@DESCRIPCION_TEC1", desc_tec1.Equals("")?(object)DBNull.Value: desc_tec1);
+				string desc_tec2 = Convert.ToString(valores[8]);
+				cmd.Parameters.AddWithValue("@DESCRIPCION_TEC2", desc_tec2.Equals("") ? (object)DBNull.Value : desc_tec2);
+				string desc_tec3 = Convert.ToString(valores[9]);
+				cmd.Parameters.AddWithValue("@DESCRIPCION_TEC3", desc_tec3.Equals("") ? (object)DBNull.Value : desc_tec3);
+
+				cmd.Parameters.AddWithValue("@ACEPTADO", valores[10]);
 				cmd.ExecuteNonQuery();
 				conn.Close();
 			}

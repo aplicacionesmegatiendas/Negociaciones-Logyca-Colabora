@@ -1379,7 +1379,7 @@ namespace NegociacionesLogycaColabora
 					valores_cotizacion[4] = chk_aceptar.CheckState;
 					guardar.ActualizarItemCotizacion(valores_cotizacion);
 
-					object[] valores_desc_tecnica = new object[8];
+					object[] valores_desc_tecnica = new object[11];
 					valores_desc_tecnica[0] = lbl_referencia.Text;
 					valores_desc_tecnica[1] = txt_alto_inv.Text;
 					valores_desc_tecnica[2] = txt_ancho_inv.Text;
@@ -1387,7 +1387,13 @@ namespace NegociacionesLogycaColabora
 					valores_desc_tecnica[4] = txt_alto_emp.Text;
 					valores_desc_tecnica[5] = txt_ancho_emp.Text;
 					valores_desc_tecnica[6] = txt_profundo_emp.Text;
-					valores_desc_tecnica[7] = chk_aceptar.CheckState;
+
+					valores_desc_tecnica[7] = txt_descripcion_tec1.Text.Trim();
+					valores_desc_tecnica[8] = txt_descripcion_tec2.Text.Trim();
+					valores_desc_tecnica[9] = txt_descripcion_tec3.Text.Trim();
+
+					valores_desc_tecnica[10] = chk_aceptar.CheckState;
+
 					guardar.ActualizarItemDescripcionTecnica(valores_desc_tecnica);
 
 					guardar.ActualizarItemCriteriosClasificacion(lbl_referencia.Text, dgv_criterios_clasif, chk_aceptar.Checked);

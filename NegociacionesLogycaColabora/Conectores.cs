@@ -792,9 +792,9 @@ namespace NegociacionesLogycaColabora
 			foreach (string item in items)
 			{
 				List<List<object>> info_item = datos.ObtenerDatosItems(numero_doc, nombre_doc, gln_prov, gln_comp, item, 3);
-				if (Convert.ToBoolean(info_item[0][12]).Equals(true))
+				if (Convert.ToBoolean(info_item[0][15]).Equals(true))
 				{
-					for (int i = 0; i < 6; i++)
+					for (int i = 0; i < 9; i++)
 					{
 						movimientos = "";
 
@@ -858,6 +858,27 @@ namespace NegociacionesLogycaColabora
 								f104_id = "Profundo_UM_Empaque(cm)".PadRight(50, ' ');
 								movimientos += f104_id;
 								f123_dato = Convert.ToString(info_item[0][11]).Trim().PadRight(60, ' ');
+								movimientos += f123_dato;
+								break;
+							case 6:
+								movimientos += f104_id_descripcion_tecnica;
+								f104_id = "FR_descripcion_1".PadRight(50, ' ');
+								movimientos += f104_id;
+								f123_dato = Convert.ToString(info_item[0][12]).Trim().PadRight(60, ' ');
+								movimientos += f123_dato;
+								break;
+							case 7:
+								movimientos += f104_id_descripcion_tecnica;
+								f104_id = "FR_descripcion_2".PadRight(50, ' ');
+								movimientos += f104_id;
+								f123_dato = Convert.ToString(info_item[0][13]).Trim().PadRight(60, ' ');
+								movimientos += f123_dato;
+								break;
+							case 8:
+								movimientos += f104_id_descripcion_tecnica;
+								f104_id = "FR_descripcion_3".PadRight(50, ' ');
+								movimientos += f104_id;
+								f123_dato = Convert.ToString(info_item[0][14]).Trim().PadRight(60, ' ');
 								movimientos += f123_dato;
 								break;
 						}

@@ -101,6 +101,9 @@ namespace NegociacionesLogycaColabora
 			txt_alto_emp.Text = "";
 			txt_ancho_emp.Text = "";
 			txt_profundo_emp.Text = "";
+			txt_descripcion_tec1.Text = "";
+			txt_descripcion_tec2.Text = "";
+			txt_descripcion_tec3.Text = "";
 
 			//////////////////////////PRECIOS DE VENTA////////////////////////////////////
 			txt_precio2.Text = "";

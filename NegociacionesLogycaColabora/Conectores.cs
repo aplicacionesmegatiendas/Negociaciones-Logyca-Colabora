@@ -1376,13 +1376,6 @@ namespace NegociacionesLogycaColabora
 
 		public void CrearConectorItemPortafolios(string numero_doc, string nombre_doc, string gln_prov, string gln_com, List<string> portafolios, string proveedor)
 		{
-			string año = DateTime.Now.Year.ToString();
-			string mes = DateTime.Now.Month.ToString("00");
-			string dia = DateTime.Now.Day.ToString("00");
-			string hora = DateTime.Now.Hour.ToString("00");
-			string minuto = DateTime.Now.Minute.ToString("00");
-			string segundo = DateTime.Now.Second.ToString("00");
-			string fechahora = año + mes + dia + hora + minuto + segundo;
 			////////////////////////ENCABEZADO///////////////////////
 
 			string REG_INICIO = "000000100000001001";

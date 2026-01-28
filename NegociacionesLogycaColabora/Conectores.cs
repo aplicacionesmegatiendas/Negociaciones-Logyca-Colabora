@@ -1374,7 +1374,159 @@ namespace NegociacionesLogycaColabora
 			return secuencia;
 		}
 
-		public void CrearConectorItemPortafolios(string numero_doc, string nombre_doc, string gln_prov, string gln_com/*, string nombreArchivo*/, List<string> portafolios, string proveedor)
+		public void CrearConectorItemPortafolios(string numero_doc, string nombre_doc, string gln_prov, string gln_com, List<string> portafolios, string proveedor)
+		{
+			string año = DateTime.Now.Year.ToString();
+			string mes = DateTime.Now.Month.ToString("00");
+			string dia = DateTime.Now.Day.ToString("00");
+			string hora = DateTime.Now.Hour.ToString("00");
+			string minuto = DateTime.Now.Minute.ToString("00");
+			string segundo = DateTime.Now.Second.ToString("00");
+			string fechahora = año + mes + dia + hora + minuto + segundo;
+			////////////////////////ENCABEZADO///////////////////////
+
+			string REG_INICIO = "000000100000001001";
+
+			string encabezado = "";
+			string E_F_NUMERO_REG = ""; //Numerico 7 - Numero consecutivo
+			string E_F_TIPO_REG = "0136"; //Numerico 4 - Valor fijo = 440
+			string E_F_SUBTIPO_REG = "00"; //Numerico 2 - Valor fijo = 00
+			string E_F_VERSION_REG = "01"; //Numerico 2 - Version = 01
+			string E_F_CIA = "001"; // Numerico 3 
+			string E_F_ACTUALIZA_REG = "1";
+			string E_f136_id = "";
+			string E_f136_descripcion = "";
+			string E_f136_notas = "";
+
+			///////////////////////DETALLE////////////////////////////
+			string movimientos = "";
+			int nroReg = 2;
+			string M_F_NUMERO_REG = ""; //Numerico 7 - Numero consecutivo
+			string M_F_TIPO_REG = "0137"; //Numerico 4 
+			string M_F_SUBTIPO_REG = "00"; //Numerico 2 - Valor fijo = 00
+			string M_F_VERSION_REG = "01"; //Numerico 2 - Version = 01
+			string M_F_CIA = "001"; // Numerico 3 - compañía a la cual pertenece la informacion del registro
+			string M_f137_id_portafolio = "";
+			string M_f137_id_item = "0000000";
+			string M_f137_referencia_item = "".PadRight(50, ' ');
+			string M_f137_codigo_barras = "";
+			string M_f137_id_ext1_detalle = "".PadRight(20, ' ');
+			string M_f137_id_ext2_detalle = "".PadRight(20, ' ');
+			string M_f137_secuencia = "";
+			string M_f137_id_paquete = "".PadRight(20, ' ');
+
+			string REG_CIERRE = "";
+
+			WSUNOEE.WSUNOEE wsunoee = new WSUNOEE.WSUNOEE();
+			int err = 1;
+			string xml_item_portafolio = $@"<?xml version=""1.0"" encoding=""utf-8""?>
+							 <Importar>
+								<NombreConexion>unoee_invercomer</NombreConexion>
+								<IdCia>1</IdCia>
+								<Usuario>ws_importar_mega</Usuario>
+								<Clave>rLFgx)bL</Clave>
+								<Datos>
+									<Linea>{REG_INICIO}</Linea>";
+
+			foreach (string item in portafolios)
+			{
+				Datos datos = new Datos();
+				List<List<object>> info_item = datos.ObtenerDatosItems(numero_doc, nombre_doc, gln_prov, gln_com, item.Split('-')[0], 8);
+
+				encabezado = "";
+				if (info_item[0].Count > 0)
+				{
+					E_F_NUMERO_REG = nroReg.ToString().PadLeft(7, '0');
+					encabezado += E_F_NUMERO_REG;
+					encabezado += E_F_TIPO_REG;
+					encabezado += E_F_SUBTIPO_REG;
+					encabezado += E_F_VERSION_REG;
+					encabezado += E_F_CIA;
+					encabezado += E_F_ACTUALIZA_REG;
+
+					E_f136_id = item.Split('-')[0].Trim().PadRight(10, ' ');
+					encabezado += E_f136_id;
+
+					int sec = ObtenerSecuenciaPortafolio(E_f136_id.Trim());
+
+					/*FileStream fs = null;
+					fs = File.Create(nombreArchivo + "8_AD_PORTAFOLIO_" + E_f136_id.Trim() + "_" + proveedor + "_" + fechahora + ".TXT");*/
+
+					//AddText(fs, REG_INICIO);
+
+					E_f136_descripcion = item.Split('-')[1].Trim().PadRight(40, ' ');
+					encabezado += E_f136_descripcion;
+
+					E_f136_notas = item.Split('-')[2].Trim().PadRight(255, ' ');
+					encabezado += E_f136_notas;
+
+					//AddText(fs, encabezado);
+
+					xml_item_portafolio += $"<Linea>{encabezado}</Linea>{Environment.NewLine}";
+					nroReg++;
+					foreach (List<object> portafolio in info_item[0])
+					{
+						movimientos = "";
+
+						M_F_NUMERO_REG = nroReg.ToString().PadLeft(7, '0');
+						movimientos += M_F_NUMERO_REG;
+
+						movimientos += M_F_TIPO_REG;
+
+						movimientos += M_F_SUBTIPO_REG;
+
+						movimientos += M_F_VERSION_REG;
+
+						movimientos += M_F_CIA;
+
+						M_f137_id_portafolio = Convert.ToString(portafolio[1]).Trim().PadRight(10, ' ');
+						movimientos += M_f137_id_portafolio;
+
+						movimientos += M_f137_id_item;
+
+						movimientos += M_f137_referencia_item;
+
+						M_f137_codigo_barras = Convert.ToString(portafolio[0]).Trim().PadRight(20, ' ');
+						movimientos += M_f137_codigo_barras;
+
+						movimientos += M_f137_id_ext1_detalle;
+
+						movimientos += M_f137_id_ext2_detalle;
+
+						sec++;
+						M_f137_secuencia = sec.ToString().Trim().PadLeft(6, '0');
+						movimientos += M_f137_secuencia;
+
+						movimientos += M_f137_id_paquete;
+
+						nroReg++;
+
+						//AddText(fs, movimientos);
+						xml_item_portafolio += $"<Linea>{movimientos}</Linea>{Environment.NewLine}";
+					}
+				}
+			}
+			REG_CIERRE = nroReg.ToString().PadLeft(7, '0') + "99990001001";
+
+			//AddText(fs, REG_CIERRE);
+
+			xml_item_portafolio += $@"<Linea>{REG_CIERRE}</Linea>
+                                </Datos>
+                               </Importar> ";
+
+			//fs.Close();
+			wsunoee.Timeout = 600000;
+			DataSet ds_item_portafolio = wsunoee.ImportarXML(xml_item_portafolio, ref err);
+			DataTable dt_item_portafolio = ds_item_portafolio.Tables[0];
+
+			if (dt_item_portafolio.Rows.Count > 0)
+			{
+				foreach (DataRow dr in dt_item_portafolio.Rows)
+					dt_resumen.Rows.Add("ItemPortafolios", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
+			}
+		}
+
+		/*public void CrearConectorItemPortafolios(string numero_doc, string nombre_doc, string gln_prov, string gln_com, List<string> portafolios, string proveedor)
 		{
 			string año = DateTime.Now.Year.ToString();
 			string mes = DateTime.Now.Month.ToString("00");
@@ -1420,7 +1572,7 @@ namespace NegociacionesLogycaColabora
 			foreach (string item in portafolios)
 			{
 				Datos datos = new Datos();
-				List<List<object>> info_item = datos.ObtenerDatosItems(numero_doc, nombre_doc, gln_prov, gln_com, item.Split('-')[0], 8);
+				List<List<object>> info_item = datos.ObtenerDatosItems(numero_doc, nombre_doc, gln_prov, gln_com, item.Split('-')[0].Trim(), 8);
 				nroReg = 3;
 				encabezado = "";
 				if (info_item[0].Count > 0)
@@ -1436,11 +1588,6 @@ namespace NegociacionesLogycaColabora
 					encabezado += E_f136_id;
 
 					int sec = ObtenerSecuenciaPortafolio(E_f136_id.Trim());
-
-					/*FileStream fs = null;
-					fs = File.Create(nombreArchivo + "8_AD_PORTAFOLIO_" + E_f136_id.Trim() + "_" + proveedor + "_" + fechahora + ".TXT");*/
-
-					//AddText(fs, REG_INICIO);
 
 					WSUNOEE.WSUNOEE wsunoee = new WSUNOEE.WSUNOEE();
 					int err = 1;
@@ -1458,8 +1605,6 @@ namespace NegociacionesLogycaColabora
 
 					E_f136_notas = item.Split('-')[2].Trim().PadRight(255, ' ');
 					encabezado += E_f136_notas;
-
-					//AddText(fs, encabezado);
 
 					xml_item_portafolio += $"<Linea>{encabezado}</Linea>{Environment.NewLine}";
 
@@ -1500,19 +1645,15 @@ namespace NegociacionesLogycaColabora
 
 						nroReg++;
 
-						//AddText(fs, movimientos);
 						xml_item_portafolio += $"<Linea>{movimientos}</Linea>{Environment.NewLine}";
 					}
 
 					REG_CIERRE = nroReg.ToString().PadLeft(7, '0') + "99990001001";
 
-					//AddText(fs, REG_CIERRE);
-
 					xml_item_portafolio += $@"<Linea>{REG_CIERRE}</Linea>
                                 </Datos>
                                </Importar> ";
 
-					//fs.Close();
 					wsunoee.Timeout = 600000;
 					DataSet ds_item_portafolio = wsunoee.ImportarXML(xml_item_portafolio, ref err);
 					DataTable dt_item_portafolio = ds_item_portafolio.Tables[0];
@@ -1524,7 +1665,7 @@ namespace NegociacionesLogycaColabora
 					}
 				}
 			}
-		}
+		}*/
 
 		public void CrearConectorItemCodigoBarras(string numero_doc, string nombre_doc, string gln_prov, string gln_comp/*, string nombreArchivo*/, List<string> items)
 		{

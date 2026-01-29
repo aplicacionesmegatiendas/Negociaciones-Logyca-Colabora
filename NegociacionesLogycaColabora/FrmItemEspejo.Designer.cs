@@ -50,6 +50,7 @@
             this.chk_parametros_planeacion = new System.Windows.Forms.CheckBox();
             this.chk_listas_precio = new System.Windows.Forms.CheckBox();
             this.chk_portafolio_barra = new System.Windows.Forms.CheckBox();
+            this.chk_descripcion_tecnica = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_items)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             this.btn_aceptar.Location = new System.Drawing.Point(734, 359);
             this.btn_aceptar.Name = "btn_aceptar";
             this.btn_aceptar.Size = new System.Drawing.Size(95, 33);
-            this.btn_aceptar.TabIndex = 10;
+            this.btn_aceptar.TabIndex = 11;
             this.btn_aceptar.Text = "&ACEPTAR";
             this.btn_aceptar.UseVisualStyleBackColor = false;
             this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
@@ -267,12 +268,25 @@
             this.chk_portafolio_barra.Text = "Portafolio y Barra";
             this.chk_portafolio_barra.UseVisualStyleBackColor = true;
             // 
+            // chk_descripcion_tecnica
+            // 
+            this.chk_descripcion_tecnica.AutoSize = true;
+            this.chk_descripcion_tecnica.Checked = true;
+            this.chk_descripcion_tecnica.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_descripcion_tecnica.Location = new System.Drawing.Point(681, 210);
+            this.chk_descripcion_tecnica.Name = "chk_descripcion_tecnica";
+            this.chk_descripcion_tecnica.Size = new System.Drawing.Size(125, 17);
+            this.chk_descripcion_tecnica.TabIndex = 10;
+            this.chk_descripcion_tecnica.Text = "Descripción tecnica";
+            this.chk_descripcion_tecnica.UseVisualStyleBackColor = true;
+            // 
             // FrmItemEspejo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(841, 411);
+            this.Controls.Add(this.chk_descripcion_tecnica);
             this.Controls.Add(this.chk_portafolio_barra);
             this.Controls.Add(this.chk_listas_precio);
             this.Controls.Add(this.chk_parametros_planeacion);
@@ -319,5 +333,6 @@
         private System.Windows.Forms.CheckBox chk_parametros_planeacion;
         private System.Windows.Forms.CheckBox chk_listas_precio;
         private System.Windows.Forms.CheckBox chk_portafolio_barra;
+        private System.Windows.Forms.CheckBox chk_descripcion_tecnica;
     }
 }

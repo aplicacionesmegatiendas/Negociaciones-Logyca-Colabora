@@ -1578,9 +1578,15 @@ namespace NegociacionesLogycaColabora
 						cmb_tipo_codigo.SelectedIndex = Convert.ToInt32(ItemEspejo.Barra[1]) - 1;
 						cmb_ind_operacion.SelectedIndex = Convert.ToInt32(ItemEspejo.Barra[2]) - 1;
 						txt_factor_operacion.Text = ItemEspejo.Barra[3];
-						mensaje += "Barra ";
+						mensaje += "Barra, ";
 					}
-
+					if (ItemEspejo.DescripcionTecnica!=null)
+					{
+						txt_descripcion_tec1.Text = ItemEspejo.DescripcionTecnica[0];
+						txt_descripcion_tec2.Text = ItemEspejo.DescripcionTecnica[1];
+						txt_descripcion_tec3.Text = ItemEspejo.DescripcionTecnica[2];
+                        mensaje += "Descripción tecnica ";
+                    }
 					MessageBox.Show("Los datos de Indicador de compra, Indicador de venta, Indicador de manufactura, " +
 								mensaje.Trim().Trim(',') + " provienen de la información de otro ítem. " +
 								"Verifique estos datos y valide la información antes de guardar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);

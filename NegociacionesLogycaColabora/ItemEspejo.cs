@@ -17,7 +17,8 @@ namespace NegociacionesLogycaColabora
         private static DataTable precios_vta_adicion = null;
         private static DataTable portafolio = null;
         private static string[] barra = null;
-        private static bool seleccion = false;
+        private static string[] descripcion_tecnica = null;
+		private static bool seleccion = false;
 
         private static string desc_larga = "";
         private static string desc_corta = "";
@@ -68,7 +69,13 @@ namespace NegociacionesLogycaColabora
             set { barra = value; }
         }
 
-        public static bool Seleccion
+		public static string[] DescripcionTecnica
+		{
+			get { return descripcion_tecnica; }
+			set { descripcion_tecnica = value; }
+		}
+
+		public static bool Seleccion
         {
             get { return seleccion; }
             set { seleccion = value; }
@@ -331,7 +338,7 @@ namespace NegociacionesLogycaColabora
 
                 if (dr.HasRows)
                 {
-                    barra = new string[4];
+                    Barra = new string[4];
                     dr.Read();
                     barra[0] = Convert.ToString( dr.GetDecimal(0));
                     barra[1] = Convert.ToString( dr.GetInt16(1));
@@ -347,13 +354,54 @@ namespace NegociacionesLogycaColabora
             }
         }
 
+		public static void LlenarDescripcionTecnica(string id)
+		{
+			string SQL = @"select 
+	                        d1.f123_dato descipcion1,
+	                        d2.f123_dato descipcion2,
+	                        d3.f123_dato descipcion3
+                        from
+	                        t120_mc_items
+                            inner join t121_mc_items_extensiones on f121_id_cia = f120_id_cia and f121_rowid_item = f120_rowid 
+                            left outer join t123_mc_items_desc_tecnicas d1 on d1.f123_id_cia=f120_id_cia and d1.f123_rowid_item=f120_rowid and d1.f123_rowid_campo=86 
+                            left outer join t123_mc_items_desc_tecnicas d2 on d2.f123_id_cia = f120_id_cia and d2.f123_rowid_item = f120_rowid and d2.f123_rowid_campo = 87
+                            left outer join t123_mc_items_desc_tecnicas d3 on d3.f123_id_cia = f120_id_cia and d3.f123_rowid_item = f120_rowid and d3.f123_rowid_campo = 88 
+                        where
+	                        f120_id=@ID
+	                        and f120_id_cia=1";
 
-        /// <summary>
-        /// Obtiene el listado de items que coinciden con una descripción.
-        /// </summary>
-        /// <param name="texto">Descripción del item.</param>
-        /// <returns>Devuelve un objeto de tipo datatable que contiene la información.</returns>
-        public DataTable ListarItemsEspejo(string texto, string param)
+			try
+			{
+				SqlConnection conn = new SqlConnection(Conexion.CadenaConexionUnoee);
+				conn.Open();
+				SqlCommand cmd = new SqlCommand(SQL, conn);
+				cmd.CommandType = CommandType.Text;
+				cmd.Parameters.AddWithValue("@ID", id);
+				SqlDataReader dr = cmd.ExecuteReader();
+
+				if (dr.HasRows)
+				{
+					DescripcionTecnica = new string[3];
+					dr.Read();
+					DescripcionTecnica[0] = dr.GetString(0);
+					DescripcionTecnica[1] = dr.GetString(1);
+					DescripcionTecnica[2] = dr.GetString(2);
+				}
+				dr.Close();
+				conn.Close();
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Error al obtener descripción tecnica: " + ex.Message);
+			}
+		}
+
+		/// <summary>
+		/// Obtiene el listado de items que coinciden con una descripción.
+		/// </summary>
+		/// <param name="texto">Descripción del item.</param>
+		/// <returns>Devuelve un objeto de tipo datatable que contiene la información.</returns>
+		public DataTable ListarItemsEspejo(string texto, string param)
         {
             string SQL = "";
             if (param.Equals("desc"))

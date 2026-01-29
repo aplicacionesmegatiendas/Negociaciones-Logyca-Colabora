@@ -33,7 +33,7 @@ namespace NegociacionesLogycaColabora
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;            
+            Cursor = Cursors.WaitCursor;
             try
             {
                 if (rdb_descripcion.Checked.Equals(true))
@@ -50,8 +50,8 @@ namespace NegociacionesLogycaColabora
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-			Cursor = Cursors.Default;
-		}
+            Cursor = Cursors.Default;
+        }
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
@@ -82,13 +82,15 @@ namespace NegociacionesLogycaColabora
                 ItemEspejo.IndVenta = Convert.ToInt32(dgv_items[5, dgv_items.CurrentRow.Index].Value);
                 ItemEspejo.IndManufactura = Convert.ToInt32(dgv_items[6, dgv_items.CurrentRow.Index].Value);
                 ItemEspejo.Seleccion = true;
+                if (chk_descripcion_tecnica.Checked)
+                    ItemEspejo.LlenarDescripcionTecnica(Convert.ToString(dgv_items[0, dgv_items.CurrentRow.Index].Value));
                 this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-			Cursor = Cursors.Default;
-		}
+            Cursor = Cursors.Default;
+        }
     }
 }

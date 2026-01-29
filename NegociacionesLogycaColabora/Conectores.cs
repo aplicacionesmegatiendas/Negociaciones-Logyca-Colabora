@@ -1374,7 +1374,7 @@ namespace NegociacionesLogycaColabora
 			return secuencia;
 		}
 
-		public void CrearConectorItemPortafolios(string numero_doc, string nombre_doc, string gln_prov, string gln_com, List<string> portafolios, string proveedor)
+		/*public void CrearConectorItemPortafolios(string numero_doc, string nombre_doc, string gln_prov, string gln_com, List<string> portafolios, string proveedor)
 		{
 			////////////////////////ENCABEZADO///////////////////////
 
@@ -1442,8 +1442,8 @@ namespace NegociacionesLogycaColabora
 
 					int sec = ObtenerSecuenciaPortafolio(E_f136_id.Trim());
 
-					/*FileStream fs = null;
-					fs = File.Create(nombreArchivo + "8_AD_PORTAFOLIO_" + E_f136_id.Trim() + "_" + proveedor + "_" + fechahora + ".TXT");*/
+					//FileStream fs = null;
+					//fs = File.Create(nombreArchivo + "8_AD_PORTAFOLIO_" + E_f136_id.Trim() + "_" + proveedor + "_" + fechahora + ".TXT");
 
 					//AddText(fs, REG_INICIO);
 
@@ -1517,9 +1517,9 @@ namespace NegociacionesLogycaColabora
 				foreach (DataRow dr in dt_item_portafolio.Rows)
 					dt_resumen.Rows.Add("ItemPortafolios", dr[0], dr[1], dr[2], dr[3], dr[4], dr[5], dr[6]);
 			}
-		}
+		}*/
 
-		/*public void CrearConectorItemPortafolios(string numero_doc, string nombre_doc, string gln_prov, string gln_com, List<string> portafolios, string proveedor)
+		public void CrearConectorItemPortafolios(string numero_doc, string nombre_doc, string gln_prov, string gln_com, List<string> portafolios, string proveedor)
 		{
 			string año = DateTime.Now.Year.ToString();
 			string mes = DateTime.Now.Month.ToString("00");
@@ -1658,7 +1658,7 @@ namespace NegociacionesLogycaColabora
 					}
 				}
 			}
-		}*/
+		}
 
 		public void CrearConectorItemCodigoBarras(string numero_doc, string nombre_doc, string gln_prov, string gln_comp/*, string nombreArchivo*/, List<string> items)
 		{

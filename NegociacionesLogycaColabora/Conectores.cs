@@ -1855,7 +1855,8 @@ namespace NegociacionesLogycaColabora
 			foreach (string item in items)
 			{
 				List<List<object>> info_item = datos.ObtenerDatosItems(numero_doc, nombre_doc, gln_prov, gln_comp, item, 11);
-				//if (Convert.ToBoolean(info_item[0][11]) == true)
+				if (info_item[0] == null)
+					continue;
 				//{
 				for (int i = 0; i < 2; i++)
 				{

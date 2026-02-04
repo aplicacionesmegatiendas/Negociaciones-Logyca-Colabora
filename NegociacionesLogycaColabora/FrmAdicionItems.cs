@@ -1898,8 +1898,11 @@ namespace NegociacionesLogycaColabora
 			if (chk_aceptar.Checked == true)
 			{
 				cmb_motivo_dev.SelectedIndex = -1;
+				cmb_motivo_dev.Enabled= false;
 			}
-		}
+			else
+                cmb_motivo_dev.Enabled = true;
+        }
 
 		private void btn_act_Click(object sender, EventArgs e)
 		{

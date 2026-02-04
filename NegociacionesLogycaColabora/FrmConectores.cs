@@ -99,7 +99,7 @@ namespace NegociacionesLogycaColabora
 
 				Conectores.PrepararResumen();
 
-				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value));
+				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value),true);
 				Conectores conector = new Conectores();
 				//conector.CrearBandejas();
 				conector.CrearConectorItemAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), /*Environment.GetFolderPath((Environment.SpecialFolder.MyDocuments)) + "\\CONECTORES\\ADICION\\1_AD_CONECTOR_ITEM_" + cmb_proveedores.Text + ".TXT",*/ lista_items);
@@ -125,7 +125,7 @@ namespace NegociacionesLogycaColabora
 
 				Conectores.PrepararResumen();
 
-				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value));
+				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value),true);
 				Conectores conector = new Conectores();
 				//conector.CrearBandejas();
 				conector.CrearConectorItemDescripcionTecnica(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value),/* Environment.GetFolderPath((Environment.SpecialFolder.MyDocuments)) + "\\CONECTORES\\ADICION\\2_AD_CONECTOR_ITEM_DESC_TEC_" + cmb_proveedores.Text + ".TXT",*/ lista_items);
@@ -151,7 +151,7 @@ namespace NegociacionesLogycaColabora
 
 				Conectores.PrepararResumen();
 
-				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value));
+				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), true);
 				Conectores conector = new Conectores();
 				//conector.CrearBandejas();
 				conector.CrearConectorItemCriterio(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), /*Environment.GetFolderPath((Environment.SpecialFolder.MyDocuments)) + "\\CONECTORES\\ADICION\\3_AD_CONECTOR_ITEM_CRITERIO_" + cmb_proveedores.Text + ".TXT",*/ lista_items);
@@ -177,7 +177,7 @@ namespace NegociacionesLogycaColabora
 
 				Conectores.PrepararResumen();
 
-				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value));
+				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), true);
 				Conectores conector = new Conectores();
 				//conector.CrearBandejas();
 				conector.CrearConectorItemParametrosPlaneacion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), /*Environment.GetFolderPath((Environment.SpecialFolder.MyDocuments)) + "\\CONECTORES\\ADICION\\4_AD_CONECTOR_ITEM_PARAMS_PLAN_" + cmb_proveedores.Text + ".TXT",*/ lista_items);
@@ -203,7 +203,7 @@ namespace NegociacionesLogycaColabora
 
 				Conectores.PrepararResumen();
 
-				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value));
+				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), true);
 				Conectores conector = new Conectores();
 				//conector.CrearBandejas();
 				conector.CrearConectorItemCodigoBarras(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), /*Environment.GetFolderPath((Environment.SpecialFolder.MyDocuments)) + "\\CONECTORES\\ADICION\\5_AD_CONECTOR_ITEM_CODIGO_BARRAS_" + cmb_proveedores.Text + ".TXT",*/ lista_items);
@@ -229,7 +229,7 @@ namespace NegociacionesLogycaColabora
 
 				Conectores.PrepararResumen();
 
-				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value));
+				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), true);
 				Conectores conector = new Conectores();
 				//conector.CrearBandejas();
 				conector.CrearConectorItemCotizacion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), /*Environment.GetFolderPath((Environment.SpecialFolder.MyDocuments)) + "\\CONECTORES\\ADICION\\6_AD_CONECTOR_ITEM_COTIZACION_" + cmb_proveedores.Text + ".TXT",*/ Convert.ToString(cmb_proveedores.SelectedValue), "001", lista_items);
@@ -255,7 +255,7 @@ namespace NegociacionesLogycaColabora
 
 				Conectores.PrepararResumen();
 
-				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value));
+				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), true);
 				Conectores conector = new Conectores();
 				//conector.CrearBandejas();
 				conector.CrearConectorItemPreciosVenta(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), /*Environment.GetFolderPath((Environment.SpecialFolder.MyDocuments)) + "\\CONECTORES\\ADICION\\7_AD_CONECTOR_ITEM_PRECIO_VTA_" + cmb_proveedores.Text + ".TXT",*/ lista_items);
@@ -307,7 +307,7 @@ namespace NegociacionesLogycaColabora
 
 				Conectores.PrepararResumen();
 
-				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value));
+				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), true);
 				Conectores conector = new Conectores();
 				//conector.CrearBandejas();
 				try
@@ -504,7 +504,7 @@ namespace NegociacionesLogycaColabora
 
 				Conectores.PrepararResumen();
 
-				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value));
+				List<string> lista_items = datos.ObtenerListadoGeneralAdicion(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), true);
 				Conectores conector = new Conectores();
 				//conector.CrearBandejas();
 				conector.CrearConectorItemPum(Convert.ToString(dgv_documentos[1, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[2, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[4, dgv_documentos.CurrentRow.Index].Value), Convert.ToString(dgv_documentos[3, dgv_documentos.CurrentRow.Index].Value), lista_items);

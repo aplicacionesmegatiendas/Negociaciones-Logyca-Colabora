@@ -3203,15 +3203,13 @@ namespace NegociacionesLogycaColabora
 								ot_gtin
                             FROM
 								Documentos
-								INNER JOIN Items on it_numero_doc=do_numero_doc AND it_nombre_doc=do_nombre_doc AND it_gln_proveedor=do_gln_proveedor AND it_gln_comprador=do_gln_comprador 
-								INNER JOIN OtrosDatos ON ot_numero_doc=it_numero_doc AND ot_nombre_doc=it_nombre_doc AND ot_gln_proveedor=it_gln_proveedor AND it_gln_comprador=do_gln_comprador and ot_gtin=it_gtin
+								INNER JOIN OtrosDatos ON ot_numero_doc=it_numero_doc AND ot_nombre_doc=it_nombre_doc AND ot_gln_proveedor=it_gln_proveedor AND it_gln_comprador=do_gln_comprador
                             WHERE 
 								do_numero_doc = @NRO_DOC 
 								AND do_nombre_doc = @NOMB_DOC
                                 AND do_gln_proveedor = @GLN_PROV 
 								AND do_gln_comprador = @GLN_COMP  
-								AND ot_gtin = @GTIN
-								AND it_aceptado=1";
+								AND ot_gtin = @GTIN";
 
 			List<List<object>> listado_general = new List<List<object>>();
 			List<object> listado_items = null;
@@ -3764,7 +3762,7 @@ namespace NegociacionesLogycaColabora
 		/// <param name="gln_proveedor">Gln proveedor.</param>
 		/// <param name="gln_comprador">Gln comprador.</param>
 		/// <returns></returns>
-		public List<string> ObtenerListadoGeneralAdicion(string numero_doc, string nombre_doc, string gln_proveedor, string gln_comprador)
+		public List<string> ObtenerListadoGeneralAdicion(string numero_doc, string nombre_doc, string gln_proveedor, string gln_comprador, bool aceptado)
 		{
 			string SQL = @"SELECT 
 							it_gtin 
@@ -3777,6 +3775,11 @@ namespace NegociacionesLogycaColabora
 							do_nombre_doc=@NOMB_DOC 
 							AND do_gln_proveedor=@GLN_PROV AND 
 							do_gln_comprador=@GLN_COMP";
+			if (aceptado)
+			{
+				SQL += " AND it_aceptado=1";
+
+			}
 			List<string> listado = null;
 			try
 			{

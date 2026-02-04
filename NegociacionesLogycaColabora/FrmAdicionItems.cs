@@ -282,7 +282,7 @@ namespace NegociacionesLogycaColabora
 		private void ListarItems()
 		{
 			Datos datos = new Datos();
-			lista_items = datos.ObtenerListadoGeneralAdicion(Datos.NumeroDocumento, Datos.NombreDocumento, Datos.GlnProveedor, Datos.GlnComprador);
+			lista_items = datos.ObtenerListadoGeneralAdicion(Datos.NumeroDocumento, Datos.NombreDocumento, Datos.GlnProveedor, Datos.GlnComprador,false);
 		}
 
 		private void ObtenerDatosItem(string referencia)

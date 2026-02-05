@@ -1,20 +1,21 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Math;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
-using System.Windows.Forms;
-using System.Configuration;
-using System.Net.Mail;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using System.Net.Security;
-using ClosedXML.Excel;
 using System.Globalization;
-using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace NegociacionesLogycaColabora
 {
@@ -1089,7 +1090,11 @@ namespace NegociacionesLogycaColabora
 						{
 							continue;
 						}
-						id = VerificarItemExiste(lineas.Cell(i, COLUMNA_GTIN).GetValue<string>());
+						string id_item_negociacion = lineas.Cell(i, COLUMNA_GTIN).GetValue<string>().TrimEnd('\n', '\r').TrimStart('0').Trim();
+						if (string.IsNullOrEmpty(id_item_negociacion))
+							id_item_negociacion = "0";
+
+                        id = VerificarItemExiste(id_item_negociacion);
 						if (id.Equals(""))
 						{
 							if (gln_comprador.Trim().Equals(lineas.Cell(i, COLUMNA_GLN_COMPRADOR).GetValue<string>()))
@@ -1127,7 +1132,7 @@ namespace NegociacionesLogycaColabora
 								cmd.Parameters.AddWithValue("@GLN_PROV", gln_proveedor);
 								cmd.Parameters.AddWithValue("@GLN_COMP", gln_comprador);
 
-								cmd.Parameters.AddWithValue("@GTIN", lineas.Cell(i, COLUMNA_GTIN).GetValue<string>().TrimEnd('\n', '\r').Trim());
+								cmd.Parameters.AddWithValue("@GTIN", id_item_negociacion);
 								if (COLUMNA_DESCRIPCION_LARGA > 0)
 								{
 									string desc_larga = lineas.Cell(i, COLUMNA_DESCRIPCION_LARGA).GetValue<string>().TrimEnd('\n', '\r').Trim();

@@ -3207,14 +3207,11 @@ namespace NegociacionesLogycaColabora
 								isnull(ot_id_calificador_cantidad_contenida, '') ot_id_calificador_cantidad_contenida,
 								ot_gtin
                             FROM
-								Documentos
-								INNER JOIN OtrosDatos ON ot_numero_doc=it_numero_doc AND ot_nombre_doc=it_nombre_doc AND ot_gln_proveedor=it_gln_proveedor AND it_gln_comprador=do_gln_comprador
-                            WHERE 
-								do_numero_doc = @NRO_DOC 
-								AND do_nombre_doc = @NOMB_DOC
-                                AND do_gln_proveedor = @GLN_PROV 
-								AND do_gln_comprador = @GLN_COMP  
-								AND ot_gtin = @GTIN";
+                                Documentos
+                            INNER JOIN OtrosDatos ON do_numero_doc = ot_numero_doc AND do_nombre_doc = ot_nombre_doc
+                                                        AND do_gln_proveedor = ot_gln_proveedor AND do_gln_comprador = ot_gln_comprador
+                            WHERE do_numero_doc = @NRO_DOC AND do_nombre_doc = @NOMB_DOC
+                                    AND do_gln_proveedor = @GLN_PROV AND do_gln_comprador = @GLN_COMP  AND ot_gtin = @GTIN";
 
 			List<List<object>> listado_general = new List<List<object>>();
 			List<object> listado_items = null;

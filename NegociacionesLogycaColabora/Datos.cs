@@ -3910,7 +3910,7 @@ namespace NegociacionesLogycaColabora
 					cmd.Parameters.AddWithValue("@GTIN", valores[0]);
 					cmd.Parameters.AddWithValue("@ACEPTADO", valores[13]);
 					cmd.Parameters.AddWithValue("@MOTIVO", valores[14]);
-					cmd.ExecuteNonQuery();
+					nro=cmd.ExecuteNonQuery();
 					conn.Close();
 				}
 			}
